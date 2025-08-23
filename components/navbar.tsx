@@ -71,12 +71,12 @@ export function Navbar() {
             <Link href="/" className="text-foreground hover:text-primary transition-colors font-medium">
               Home
             </Link>
-            <Link href="/events" className="text-foreground hover:text-primary transition-colors font-medium">
+            {/* <Link href="/events" className="text-foreground hover:text-primary transition-colors font-medium">
               Events
-            </Link>
-            <Link href="/merch" className="text-foreground hover:text-primary transition-colors font-medium">
+            </Link> */}
+            {/* <Link href="/merch" className="text-foreground hover:text-primary transition-colors font-medium">
               Merch
-            </Link>
+            </Link> */}
             {/* <Button asChild className="bg-primary hover:bg-primary/90">
               <Link href="/register">Register Now</Link>
             </Button> */}
@@ -101,20 +101,20 @@ export function Navbar() {
               >
                 Home
               </Link>
-              <Link
+              {/* <Link
                 href="/events"
                 className="block px-3 py-2 text-foreground hover:text-primary transition-colors font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Events
-              </Link>
-              <Link
+              </Link> */}
+              {/* <Link
                 href="/merch"
                 className="block px-3 py-2 text-foreground hover:text-primary transition-colors font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Merch
-              </Link>
+              </Link> */}
               <div className="px-3 py-2">
                 {/* <Button asChild className="w-full bg-primary hover:bg-primary/90">
                   <Link href="/register" onClick={() => setIsMenuOpen(false)}>

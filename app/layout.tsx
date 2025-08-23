@@ -28,7 +28,7 @@ export default function RootLayout({
     <html lang="en" className={`${dmSans.variable} dark`}>
       <body>
         {/* <CustomCursor */}
-        <CustomCursor imageUrl="/background.png" /> 
+        {/* <CustomCursor imageUrl="/background.png" />  */}
         <SessionProvider>{children}</SessionProvider>
       </body>
     </html>
