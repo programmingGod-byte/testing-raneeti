@@ -77,9 +77,9 @@ export function Navbar() {
             <Link href="/merch" className="text-foreground hover:text-primary transition-colors font-medium">
               Merch
             </Link>
-            <Button asChild className="bg-primary hover:bg-primary/90">
+            {/* <Button asChild className="bg-primary hover:bg-primary/90">
               <Link href="/register">Register Now</Link>
-            </Button>
+            </Button> */}
           </div>
 
           {/* Mobile menu button */}
@@ -116,11 +116,11 @@ export function Navbar() {
                 Merch
               </Link>
               <div className="px-3 py-2">
-                <Button asChild className="w-full bg-primary hover:bg-primary/90">
+                {/* <Button asChild className="w-full bg-primary hover:bg-primary/90">
                   <Link href="/register" onClick={() => setIsMenuOpen(false)}>
                     Register Now
                   </Link>
-                </Button>
+                </Button> */}
               </div>
             </div>
           </div>

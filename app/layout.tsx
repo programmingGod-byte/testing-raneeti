@@ -25,9 +25,10 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={dmSans.variable}>
+    <html lang="en" className={`${dmSans.variable} dark`}>
       <body>
-        <CustomCursor imageUrl="/background.png" />
+        {/* <CustomCursor */}
+        <CustomCursor imageUrl="/background.png" /> 
         <SessionProvider>{children}</SessionProvider>
       </body>
     </html>
