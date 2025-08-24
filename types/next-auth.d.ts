@@ -1,3 +1,6 @@
+// colorthief.d.ts
+declare module 'colorthief';
+
 declare module "next-auth" {
   interface Session {
     user: {

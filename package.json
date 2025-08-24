@@ -50,8 +50,10 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "1.0.4",
+    "colorthief": "^2.6.0",
     "date-fns": "4.1.0",
     "embla-carousel-react": "8.5.1",
+    "framer-motion": "^12.23.12",
     "gcp-metadata": "latest",
     "geist": "^1.3.1",
     "gsap": "^3.13.0",
@@ -79,6 +81,7 @@
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
     "tsparticles": "^3.9.1",
+    "tsparticles-slim": "^2.12.0",
     "vaul": "^0.9.9",
     "xlsx": "latest",
     "zod": "3.25.67"
