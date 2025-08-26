@@ -22,28 +22,29 @@ export function AboutFestival() {
 
         {/* Logo and Details Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 items-center">
-          <div className="justify-center md:justify-start flex">
-            <div className="relative w-48 h-48">
-              <Image
-                src="/image.png" // Replace with your actual logo path
-                alt="RANN-NEETI Logo"
-                layout="fill"
-                objectFit="contain"
-                className="rounded-md shadow-md"
-              />
-            </div>
-          </div>
-          <div>
-            <h3 className="text-2xl font-semibold text-foreground mb-4 tracking-tight">Embracing the Spirit</h3>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              The RANN-NEETI logo symbolizes the fusion of strategy ('Neeti') with the battlefield ('Rann'), embodying the
-              essence of competitive sports. It represents the platform where tactical prowess meets athletic excellence,
-              in the majestic setting of IIT Mandi.
-            </p>
-            {/* You can add more details or a call to action here if needed */}
-          </div>
-        </div>
-
+  {/* This container is now always centered */}
+  <div className="justify-center flex">
+    {/* The animate-float class is added here */}
+    <div className="relative w-48 h-48 animate-float">
+      <Image
+        src="/images-removebg-preview.png" // Replace with your actual logo path
+        alt="RANN-NEETI Logo"
+        layout="fill"
+        objectFit="contain"
+        className="rounded-md shadow-md"
+      />
+    </div>
+  </div>
+  <div>
+    <h3 className="text-2xl font-semibold text-foreground mb-4 tracking-tight">Embracing the Spirit</h3>
+    <p className="text-lg text-muted-foreground leading-relaxed">
+      The RANN-NEETI logo symbolizes the fusion of strategy ('Neeti') with the battlefield ('Rann'), embodying the
+      essence of competitive sports. It represents the platform where tactical prowess meets athletic excellence,
+      in the majestic setting of IIT Mandi.
+    </p>
+    {/* You can add more details or a call to action here if needed */}
+  </div>
+</div>
         {/* Enhanced cards with better hover effects */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-24">
           <InfoCard

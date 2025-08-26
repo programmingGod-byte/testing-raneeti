@@ -117,6 +117,20 @@ export async function getUserByEmail(email: string) {
   return await db.collection<User>("users").findOne({ email })
 }
 
+export async function getAllUsers(): Promise<User[]> {
+  try {
+    const db = await getDatabase()
+    // The find method with no arguments returns a cursor to all documents in the collection.
+    const users = await db.collection<User>("users").find({}).toArray()
+    return users
+  } catch (error) {
+    console.error("Failed to fetch all users:", error)
+    throw new Error("Could not retrieve users from the database.")
+  }
+}
+
+
+
 export async function updateUser(id: string, updates: Partial<User>) {
   const db = await getDatabase()
   return await db
@@ -244,6 +258,7 @@ export async function getUserProfile(userEmail: string) {
 
   // Get user data
   const user = await db.collection<User>("users").findOne({ email: userEmail })
+  
   if (!user) {
     return null
   }
@@ -270,6 +285,7 @@ export async function getUserProfile(userEmail: string) {
     sportsToPlay: user.sportsToPlay,
     registeredEvents,
     orders,
+    sports:user.sports
   }
 }
 

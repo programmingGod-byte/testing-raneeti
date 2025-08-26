@@ -82,7 +82,7 @@
         console.log("[v0] Starting registrations export...")
         const response = await fetch("/api/admin/export/registrations")
         console.log("[v0] Export response status:", response.status)
-
+        console.log(response)
         if (response.ok) {
           const blob = await response.blob()
           const url = window.URL.createObjectURL(blob)

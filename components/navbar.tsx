@@ -2,11 +2,14 @@
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { useSession } from "next-auth/react"
 import { useState, useEffect } from "react"
 import { Menu, X } from "lucide-react"
 
+
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const { data: session, status } = useSession()
   const [usePrimaryFont, setUsePrimaryFont] = useState(true)
 
   useEffect(() => {
@@ -71,15 +74,31 @@ export function Navbar() {
             <Link href="/" className="text-foreground hover:text-primary transition-colors font-medium">
               Home
             </Link>
+
+              <Link
+                href="/#our-teams"
+                className="block px-3 py-2 text-foreground hover:text-primary transition-colors font-medium"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                our teams
+              </Link>
             {/* <Link href="/events" className="text-foreground hover:text-primary transition-colors font-medium">
               Events
             </Link> */}
             {/* <Link href="/merch" className="text-foreground hover:text-primary transition-colors font-medium">
               Merch
             </Link> */}
-            {/* <Button asChild className="bg-primary hover:bg-primary/90">
-              <Link href="/register">Register Now</Link>
-            </Button> */}
+            {
+              status === "authenticated" ? (
+                <Button asChild className="bg-primary hover:bg-primary/90">
+                  <Link href="/dashboard">Dashboard</Link>
+                </Button>
+              ) : (
+                <Button asChild className="bg-primary hover:bg-primary/90">
+                  <Link href="/register">Register Now</Link>
+                </Button>
+              ) 
+            }
           </div>
 
           {/* Mobile menu button */}
@@ -101,6 +120,14 @@ export function Navbar() {
               >
                 Home
               </Link>
+
+              <Link
+                href="/#our-teams"
+                className="block px-3 py-2 text-foreground hover:text-primary transition-colors font-medium"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                our teams
+              </Link>
               {/* <Link
                 href="/events"
                 className="block px-3 py-2 text-foreground hover:text-primary transition-colors font-medium"
@@ -116,11 +143,11 @@ export function Navbar() {
                 Merch
               </Link> */}
               <div className="px-3 py-2">
-                {/* <Button asChild className="w-full bg-primary hover:bg-primary/90">
+                <Button asChild className="w-full bg-primary hover:bg-primary/90">
                   <Link href="/register" onClick={() => setIsMenuOpen(false)}>
                     Register Now
                   </Link>
-                </Button> */}
+                </Button>
               </div>
             </div>
           </div>

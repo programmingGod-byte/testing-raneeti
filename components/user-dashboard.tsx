@@ -13,15 +13,18 @@ interface UserDashboardProps {
   session: Session
 }
 
+// Define a type for the user data for better type safety
 interface UserData {
-  name: string
-  email: string
-  phoneNumber: string
-  collegeName: string
-  collegeType: string
-  sportsToPlay: string[]
-  registeredEvents: any[]
-  orders: any[]
+  name: string;
+  email: string;
+  phoneNumber: string;
+  collegeName: string;
+  collegeType?: string;
+  registeredEvents: any[]; // Replace 'any' with a proper type if available
+  orders: any[]; // Replace 'any' with a proper type if available
+  sports: {
+    [key: string]: number;
+  };
 }
 
 export function UserDashboard({ session }: UserDashboardProps) {
@@ -91,53 +94,14 @@ export function UserDashboard({ session }: UserDashboardProps) {
           </Button>
         </div>
 
-        {/* Profile Overview */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <Card className="bg-slate-900 border-slate-800">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-white">Events Registered</CardTitle>
-              <Calendar className="h-4 w-4 text-slate-400" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold text-rose-500">{userData.registeredEvents?.length || 0}</div>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-slate-900 border-slate-800">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-white">Sports Selected</CardTitle>
-              <Trophy className="h-4 w-4 text-slate-400" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold text-rose-500">{userData.sportsToPlay?.length || 0}</div>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-slate-900 border-slate-800">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-white">Orders Placed</CardTitle>
-              <ShoppingBag className="h-4 w-4 text-slate-400" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold text-rose-500">{userData.orders?.length || 0}</div>
-            </CardContent>
-          </Card>
-        </div>
-
         {/* Detailed Information */}
         <Tabs defaultValue="profile" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-4 bg-slate-900 border-slate-800">
+          <TabsList className="grid w-full grid-cols-2 bg-slate-900 border-slate-800">
             <TabsTrigger value="profile" className="text-white data-[state=active]:bg-rose-600">
               Profile
             </TabsTrigger>
-            <TabsTrigger value="events" className="text-white data-[state=active]:bg-rose-600">
-              My Events
-            </TabsTrigger>
             <TabsTrigger value="sports" className="text-white data-[state=active]:bg-rose-600">
               Sports
-            </TabsTrigger>
-            <TabsTrigger value="orders" className="text-white data-[state=active]:bg-rose-600">
-              Orders
             </TabsTrigger>
           </TabsList>
 
@@ -179,101 +143,36 @@ export function UserDashboard({ session }: UserDashboardProps) {
             </Card>
           </TabsContent>
 
-          <TabsContent value="events">
-            <Card className="bg-slate-900 border-slate-800">
-              <CardHeader>
-                <CardTitle className="text-white">Registered Events</CardTitle>
-                <CardDescription className="text-slate-400">Events you have registered for</CardDescription>
-              </CardHeader>
-              <CardContent>
-                {!userData.registeredEvents || userData.registeredEvents.length === 0 ? (
-                  <p className="text-center py-8 text-slate-500">No events registered yet.</p>
-                ) : (
-                  <div className="space-y-4">
-                    {userData.registeredEvents.map((event, index) => (
-                      <div
-                        key={index}
-                        className="flex items-center justify-between p-4 border border-slate-700 rounded-lg bg-slate-800"
-                      >
-                        <div>
-                          <h3 className="font-semibold text-white">{event.title}</h3>
-                          <p className="text-sm text-slate-400">
-                            {event.date} at {event.time}
-                          </p>
-                          <p className="text-sm text-slate-400">{event.venue}</p>
-                        </div>
-                        <Badge variant="secondary" className="bg-rose-600 text-white">
-                          {event.prizePool}
-                        </Badge>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </CardContent>
-            </Card>
-          </TabsContent>
-
           <TabsContent value="sports">
             <Card className="bg-slate-900 border-slate-800">
               <CardHeader>
-                <CardTitle className="text-white">Selected Sports</CardTitle>
-                <CardDescription className="text-slate-400">Sports you're interested in participating</CardDescription>
+                <CardTitle className="text-white">Registered Sports Participants</CardTitle>
+                <CardDescription className="text-slate-400">Number of participants registered for each sport.</CardDescription>
               </CardHeader>
               <CardContent>
-                {!userData.sportsToPlay || userData.sportsToPlay.length === 0 ? (
-                  <p className="text-center py-8 text-slate-500">No sports selected yet.</p>
+                {/* Check if userData.sports exists and if any sport has participants */}
+                {!userData.sports || Object.values(userData.sports).every(count => count === 0) ? (
+                  <p className="text-center py-8 text-slate-500">No participants registered for any sports.</p>
                 ) : (
-                  <div className="flex flex-wrap gap-2">
-                    {userData.sportsToPlay.map((sport, index) => (
-                      <Badge key={index} variant="outline" className="text-sm border-slate-600 text-white">
-                        {sport}
-                      </Badge>
-                    ))}
+                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    {/* Use Object.entries to map over the sports object */}
+                    {Object.entries(userData.sports)
+                      // Filter out sports with 0 participants
+                      .filter(([, count]) => count > 0)
+                      // Map over the filtered sports to display them
+                      .map(([sport, count]) => (
+                        <div key={sport} className="p-4 bg-slate-800 border border-slate-700 rounded-lg text-center">
+                           {/* Format camelCase names like 'badmintonMen' to 'Badminton Men' */}
+                           <p className="text-sm font-medium text-slate-400 capitalize">{sport.replace(/([A-Z])/g, ' $1').trim()}</p>
+                           <p className="text-2xl font-bold text-white">{count}</p>
+                        </div>
+                      ))}
                   </div>
                 )}
               </CardContent>
             </Card>
           </TabsContent>
 
-          <TabsContent value="orders">
-            <Card className="bg-slate-900 border-slate-800">
-              <CardHeader>
-                <CardTitle className="text-white">Merchandise Orders</CardTitle>
-                <CardDescription className="text-slate-400">Your order history</CardDescription>
-              </CardHeader>
-              <CardContent>
-                {!userData.orders || userData.orders.length === 0 ? (
-                  <p className="text-center py-8 text-slate-500">No orders placed yet.</p>
-                ) : (
-                  <div className="space-y-4">
-                    {userData.orders.map((order, index) => (
-                      <div
-                        key={index}
-                        className="flex items-center justify-between p-4 border border-slate-700 rounded-lg bg-slate-800"
-                      >
-                        <div>
-                          <h3 className="font-semibold text-white">{order.title}</h3>
-                          <p className="text-sm text-slate-400">Size: {order.size}</p>
-                          <p className="text-sm text-slate-400">
-                            Ordered: {new Date(order.orderDate).toLocaleDateString()}
-                          </p>
-                        </div>
-                        <div className="text-right">
-                          <p className="font-semibold text-white">₹{order.price}</p>
-                          <Badge
-                            variant={order.status === "delivered" ? "default" : "secondary"}
-                            className="bg-rose-600 text-white"
-                          >
-                            {order.status}
-                          </Badge>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </CardContent>
-            </Card>
-          </TabsContent>
         </Tabs>
       </div>
     </div>

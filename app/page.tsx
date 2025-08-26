@@ -15,7 +15,7 @@ export default function HomePage() {
       <AboutFestival />
       <CollegeFacilities />
       <ImageGallery />
-      <HeadsGallery />
+      <HeadsGallery/>
     </main>
   )
 }
