@@ -11,7 +11,7 @@ export function AboutFestival() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 tracking-tight">
-            About <span className="text-primary">RANN-NEETI</span>
+            About <span className="text-primary" style={{ fontFamily: 'GreekFont' }}>RANN-NEETI</span>
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             RANN-NEETI is IIT Mandi's premier sports festival that brings together the finest athletes from across the
@@ -94,7 +94,7 @@ export function AboutFestival() {
           <div className="relative group">
             <div className="absolute -inset-2 bg-gradient-to-r from-amber-400 to-orange-600 rounded-lg blur-lg opacity-50 group-hover:opacity-75 transition duration-500"></div>
             <img
-              src="/ancient-modern-olympics.png"
+              src="https://img.freepik.com/free-photo/sports-tools_53876-138077.jpg?semt=ais_hybrid&w=740&q=80"
               alt="RANN-NEETI Festival"
               className="relative rounded-lg shadow-2xl w-full h-auto transform group-hover:scale-105 transition-transform duration-500"
             />

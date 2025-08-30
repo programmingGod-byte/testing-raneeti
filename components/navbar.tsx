@@ -71,23 +71,23 @@ export function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="text-foreground hover:text-primary transition-colors font-medium">
+            <Link href="/" className="text-foreground hover:text-primary transition-colors font-medium" style={{ fontFamily: 'GreekFont' }}>
               Home
             </Link>
 
               <Link
                 href="/#our-teams"
-                className="block px-3 py-2 text-foreground hover:text-primary transition-colors font-medium"
+                className="block px-3 py-2 text-foreground hover:text-primary transition-colors font-medium" style={{ fontFamily: 'GreekFont' }}
                 onClick={() => setIsMenuOpen(false)}
               >
-                our teams
+                Our Teams
               </Link>
-            {/* <Link href="/events" className="text-foreground hover:text-primary transition-colors font-medium">
+            <Link href="/events" className="text-foreground hover:text-primary transition-colors font-medium" style={{ fontFamily: 'GreekFont' }}>
               Events
-            </Link> */}
-            {/* <Link href="/merch" className="text-foreground hover:text-primary transition-colors font-medium">
-              Merch
-            </Link> */}
+            </Link> 
+             <Link href="/gallery" className="text-foreground hover:text-primary transition-colors font-medium" style={{ fontFamily: 'GreekFont' }}>
+              Gallery
+            </Link>
             {
               status === "authenticated" ? (
                 <Button asChild className="bg-primary hover:bg-primary/90">
@@ -126,22 +126,22 @@ export function Navbar() {
                 className="block px-3 py-2 text-foreground hover:text-primary transition-colors font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
-                our teams
+                Our Teams
               </Link>
-              {/* <Link
+              <Link
                 href="/events"
                 className="block px-3 py-2 text-foreground hover:text-primary transition-colors font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Events
-              </Link> */}
-              {/* <Link
-                href="/merch"
+              </Link>
+              <Link
+                href="/gallery"
                 className="block px-3 py-2 text-foreground hover:text-primary transition-colors font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Merch
-              </Link> */}
+                Gallery
+              </Link>
               <div className="px-3 py-2">
                 <Button asChild className="w-full bg-primary hover:bg-primary/90">
                   <Link href="/register" onClick={() => setIsMenuOpen(false)}>

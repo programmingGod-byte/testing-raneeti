@@ -2,7 +2,7 @@ import { Navbar } from "@/components/navbar"
 import { HeroSection } from "@/components/hero-section"
 import { AboutFestival } from "@/components/about-festival"
 import { CollegeFacilities } from "@/components/college-facilities"
-import { ImageGallery } from "@/components/image-gallery"
+
 import { ParticlesBackground } from "@/components/Particles" // Import the new component
 import {HeadsGallery} from "@/components/heads-gallery" // Import the heads gallery component
 export default function HomePage() {
@@ -14,7 +14,7 @@ export default function HomePage() {
       <HeroSection />
       <AboutFestival />
       <CollegeFacilities />
-      <ImageGallery />
+      
       <HeadsGallery/>
     </main>
   )
