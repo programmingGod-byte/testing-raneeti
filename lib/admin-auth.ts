@@ -27,7 +27,7 @@ export async function verifyAdminCredentials(username: string, password: string)
 
   // For development, allow plain text password comparison
   // In production, you should hash the password in .env
-  if (process.env.NODE_ENV === "development") {
+  if (process.env.NODE_ENV === "development" || process.env.NODE_ENV === "production") {
     return password === adminPassword
   }
 

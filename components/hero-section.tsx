@@ -11,6 +11,28 @@ export function HeroSection() {
   const eventDate = new Date("2025-10-05T00:00:00");
   
   const [isVideoFinished, setIsVideoFinished] = useState(false);
+  
+  // --- New Logic to Detect Mobile Screen Size Start ---
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // This function checks the window width and updates the state.
+    // 768px is a common breakpoint for tablets (Tailwind's `md` breakpoint).
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    // Run the function on the initial client-side render
+    handleResize();
+
+    // Add an event listener to check again if the window is resized
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup: remove the event listener when the component unmounts
+    return () => window.removeEventListener("resize", handleResize);
+  }, []); // The empty dependency array ensures this effect runs only once on mount.
+  // --- New Logic to Detect Mobile Screen Size End ---
+
 
   const handleVideoEnd = () => {
     setIsVideoFinished(true);
@@ -51,7 +73,6 @@ export function HeroSection() {
 
 
   useEffect(() => {
-    // Only run animations if the video hasn't finished
     if (!isVideoFinished) {
       const ctx = gsap.context(() => {
         const tl = gsap.timeline();
@@ -83,35 +104,40 @@ export function HeroSection() {
 
       return () => ctx.revert();
     }
-  }, [isVideoFinished]); // Re-run effect if isVideoFinished changes
+  }, [isVideoFinished]);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Video & Image */}
       <div className="absolute inset-0 z-0">
+        {/* The background image is always present as a fallback */}
         <img
           src="/back.png"
           alt="Rann-Neeti background poster"
           className="w-full h-full object-cover"
         />
 
-        {!isVideoFinished && (
+        {/* --- MODIFIED PART --- */}
+        {/* The video and its dark overlay will only render if:
+            1. The video hasn't finished.
+            2. The screen is NOT mobile (`!isMobile`).
+        */}
+        {!isVideoFinished && !isMobile && (
           <>
-          <video 
-            autoPlay 
-            muted 
-            playsInline 
-            // onEnded={handleVideoEnd}
-            className="absolute inset-0 w-full h-full object-cover"
-          >
-            <source src="/Final.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-          <div className="absolute inset-0 bg-black/60" />
+            <video 
+              autoPlay 
+              muted 
+              playsInline 
+              onEnded={handleVideoEnd} // Uncommented this to make it functional
+              className="absolute inset-0 w-full h-full object-cover"
+            >
+              <source src="/Final.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            {/* The overlay is also conditional to match the video */}
+            <div className="absolute inset-0 bg-black/60" />
           </>
         )}
-        
-        
       </div>
 
       {/* This entire block will now disappear after the video finishes */}
@@ -158,22 +184,6 @@ export function HeroSection() {
                 </Link>
               </Button>
             </div>
-
-            {/* Stats */}
-            {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto mb-16">
-              <div className="animate-stat text-center">
-                <div className="text-3xl font-bold text-primary mb-2">50+</div>
-                <div className="text-gray-300">Sports Events</div>
-              </div>
-              <div className="animate-stat text-center">
-                <div className="text-3xl font-bold text-primary mb-2">1000+</div>
-                <div className="text-gray-300">Participants</div>
-              </div>
-              <div className="animate-stat text-center">
-                <div className="text-3xl font-bold text-primary mb-2">₹5L+</div>
-                <div className="text-gray-300">Prize Pool</div>
-              </div>
-            </div> */}
           </div>
           
           {/* Scroll Indicator */}
