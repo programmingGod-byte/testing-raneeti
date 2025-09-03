@@ -50,6 +50,26 @@ export function ImageGallery() {
     alt: "Table Tennis",
     title: "Table Tennis Tournament",
   },
+  {
+    src: "/pronites/1.png",
+    alt: "Table Tennis",
+    title: "Table Tennis Tournament",
+  },
+  {
+    src: "/pronites/2.png",
+    alt: "Table Tennis",
+    title: "Table Tennis Tournament",
+  },
+  {
+    src: "/pronites/3.png",
+    alt: "Table Tennis",
+    title: "Table Tennis Tournament",
+  },
+  {
+    src: "/pronites/4.png",
+    alt: "Table Tennis",
+    title: "Table Tennis Tournament",
+  },
 ]
 
 
