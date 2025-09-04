@@ -29,37 +29,37 @@ export function CollegeFacilities() {
       icon: Building,
       title: "Modern Infrastructure",
       description: "State-of-the-art academic and residential buildings with contemporary amenities.",
-      imgSrc: "/collage1.png", 
+      imgSrc: "/collage/1.png" 
     },
     {
       icon: Dumbbell,
       title: "Sports Complex",
       description: "Olympic-standard facilities including swimming pool, gymnasium, and outdoor courts.",
-      imgSrc: "https://gallery.iitmandi.co.in/api/photos/684701d6881251da6efcffe0/view", 
+      imgSrc: "/collage/2.png" 
     },
     {
       icon: Utensils,
       title: "Dining Facilities",
       description: "Multiple mess halls and cafeterias serving diverse cuisines.",
-     imgSrc: "https://thumbs.dreamstime.com/b/institute-technology-mandi-iit-mandi-institute-technology-mandi-iit-mandi-public-technical-research-university-253103681.jpg", 
+     imgSrc: "/collage/3.png" 
     },
     {
       icon: Wifi,
       title: "High-Speed Internet",
       description: "Campus-wide Wi-Fi connectivity for seamless digital experience.",
-      imgSrc: "https://thumbs.dreamstime.com/b/institute-technology-mandi-iit-mandi-institute-technology-mandi-iit-mandi-public-technical-research-university-253103707.jpg", 
+      imgSrc: "/collage/7.png" 
     },
     {
       icon: BookOpen,
       title: "Library & Labs",
       description: "Extensive library and cutting-edge research laboratories.",
-      imgSrc: "/qwerty.png", 
+      imgSrc: "/collage/5.png" 
     },
     {
       icon: Car,
       title: "Transportation",
       description: "Easy connectivity with shuttle services and parking facilities.",
-      imgSrc: "https://thumbs.dreamstime.com/b/institute-technology-mandi-iit-mandi-institute-technology-mandi-iit-mandi-public-technical-research-university-253103680.jpg", 
+      imgSrc: "/collage/6.png" 
     },
   ]
   

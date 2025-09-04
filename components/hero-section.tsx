@@ -125,15 +125,16 @@ export function HeroSection() {
         {!isVideoFinished && !isMobile && (
           <>
             <video 
-              autoPlay 
-              muted 
-              playsInline 
-              onEnded={handleVideoEnd} // Uncommented this to make it functional
-              className="absolute inset-0 w-full h-full object-cover"
-            >
-              <source src="/Final.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+  autoPlay 
+  muted 
+  playsInline 
+  loop
+  className="absolute inset-0 w-full h-full object-cover"
+>
+  <source src="/Final.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
             {/* The overlay is also conditional to match the video */}
             <div className="absolute inset-0 bg-black/60" />
           </>
