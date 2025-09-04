@@ -112,7 +112,7 @@ export function HeroSection() {
       <div className="absolute inset-0 z-0">
         {/* The background image is always present as a fallback */}
         <img
-          src="/mobile.png"
+          src="/final_mobile.png"
           alt="Rann-Neeti background poster"
           className="w-full h-full object-cover"
         />
