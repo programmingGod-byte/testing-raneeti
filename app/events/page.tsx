@@ -310,6 +310,27 @@ const sportsData = [
     imageUrl: 'https://live.staticflickr.com/65535/52312512833_16e26e1003_w.jpg',
     rules: ["Team Size: Max 15 players."],
   },
+  {
+    name: 'Table Tennis',
+    imageUrl: 'https://live.staticflickr.com/65535/52312512833_16e26e1003_w.jpg',
+    rules: [""],
+  },
+  {
+    name: 'Squash',
+    imageUrl: '/squash.png',
+    rules: [""],
+  },
+  {
+    name: 'esports',
+    imageUrl: '/esports.png',
+    rules: [""],
+  },
+  {
+    name: 'Lawn tennis',
+    imageUrl: '/lawn_tennis.png',
+    rules: [""],
+  },
+  
 ];
 
 type Sport = { name: string; imageUrl: string; rules: string[]; };
