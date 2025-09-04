@@ -483,9 +483,7 @@ const EventsPage: React.FC = () => {
             }}>CHAMPIONS</span>
           </h1>
           <p>Forge your legacy. Compete against the best. Seize victory.</p>
-          <p style={{ fontSize: '0.9rem', marginTop: '1rem', opacity: 0.7 }}>
-            💥 Click anywhere on the background for fireworks! 💥
-          </p>
+          
         </header>
 
         <section className="categories">
