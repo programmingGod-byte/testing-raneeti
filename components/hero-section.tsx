@@ -112,10 +112,11 @@ export function HeroSection() {
       <div className="absolute inset-0 z-0">
         {/* The background image is always present as a fallback */}
         <img
-          src="/back.png"
+          src="/mobile.png"
           alt="Rann-Neeti background poster"
           className="w-full h-full object-cover"
         />
+        <div className="absolute inset-0 bg-black/60" />
 
         {/* --- MODIFIED PART --- */}
         {/* The video and its dark overlay will only render if:
@@ -148,7 +149,9 @@ export function HeroSection() {
           <div ref={heroContentRef} className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
             <div className="mask-container">
               <h1 className="animate-masked-text text-6xl md:text-8xl font-bold mb-6 leading-tight">
-                <span
+                {
+                  !isMobile && <>
+                  <span
                   className="bg-gradient-to-r from-red-900 via-red-800 to-red-700 bg-clip-text text-transparent"
                   style={{ fontFamily: 'GreekFont', fontSize: '9rem' }}
                 >
@@ -156,13 +159,16 @@ export function HeroSection() {
                 </span>
                 <br />
                 <span className="text-3xl md:text-5xl text-white drop-shadow-2xl" >Gods of Olympus</span>
+                  </>
+                }
               </h1>
             </div>
 
             <div className="mask-container">
               <p className="animate-masked-text text-xl md:text-2xl mb-8 text-gray-200 max-w-2xl mx-auto leading-relaxed">
-                Embrace the Spirit of the Gods. Join IIT Mandi's ultimate sports festival where legends are born and champions
-                rise.
+               {
+                !isMobile && "Embrace the Spirit of the Gods. Join IIT Mandi's ultimate sports festival where legends are born and champions rise."
+               }
               </p>
             </div>
 
