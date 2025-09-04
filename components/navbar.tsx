@@ -31,33 +31,17 @@ export function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <div className="flex text-2xl font-bold text-white drop-shadow-md" aria-label={logoText}>
-              {logoText.split('').map((char, index) => (
-                <div key={index} className="relative">
-                  <span className="opacity-0" style={{ fontFamily: 'Audiowide, sans-serif' }}>
-                    {char === ' ' ? '\u00A0' : char}
-                  </span>
-                  <span
-                    className="absolute left-0 top-0 transition-opacity duration-500"
-                    style={{
-                      fontFamily: 'Audiowide, sans-serif',
-                      opacity: usePrimaryFont ? 1 : 0,
-                      transitionDelay: `${index * 75}ms`
-                    }}
-                  >
-                    {char === ' ' ? '\u00A0' : char}
-                  </span>
-                  <span
-                    className="absolute left-0 top-0 transition-opacity duration-500"
-                    style={{
-                      fontFamily: 'GreekFont, sans-serif',
-                      opacity: !usePrimaryFont ? 1 : 0,
-                      transitionDelay: `${index * 75}ms`
-                    }}
-                  >
-                    {char === ' ' ? '\u00A0' : char}
-                  </span>
-                </div>
-              ))}
+              {
+                <span style={
+                  {
+                    fontFamily: 'GreekFont, sans-serif',
+                  }
+                }>
+                  {
+                    logoText
+                  }
+                </span>
+              }
             </div>
           </Link>
 

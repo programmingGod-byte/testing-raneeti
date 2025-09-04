@@ -8,6 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { User, Calendar, ShoppingBag, Trophy, Phone, GraduationCap, LogOut } from "lucide-react"
 import type { Session } from "next-auth"
 import { signOut } from "next-auth/react"
+import { Navbar } from "./navbar"
 
 interface UserDashboardProps {
   session: Session
@@ -76,9 +77,16 @@ export function UserDashboard({ session }: UserDashboardProps) {
   }
 
   return (
+    <>
+   
     <div className="min-h-screen bg-gradient-to-br from-black via-slate-900 to-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
+          <Navbar />
+        
+        <br/><br/>
+        
+         
         <div className="flex items-center justify-between mb-8">
           <div>
             <h1 className="text-3xl font-bold text-white">Welcome, {userData.name}!</h1>
@@ -176,5 +184,7 @@ export function UserDashboard({ session }: UserDashboardProps) {
         </Tabs>
       </div>
     </div>
+
+    </>
   )
 }
