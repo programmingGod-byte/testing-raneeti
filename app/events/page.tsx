@@ -3,8 +3,8 @@ import React, { useState, useLayoutEffect, useRef, useCallback } from 'react';
 import { gsap } from 'gsap';
 
 // You will need to have a Navbar component at this path
-// import { Navbar } from "@/components/navbar";
-// Placeholder Navbar component for this example
+// NOTE: Make sure your Navbar component is a NAMED export, like `export const Navbar = ...`
+// If it's a default export, this import should be: `import Navbar from "@/components/navbar";`
 import { Navbar } from "@/components/navbar";
 
 // ============================================================================
@@ -67,7 +67,7 @@ const AnimatedBackground: React.FC = () => {
         element: particle,
         vx,
         vy,
-        life: 1,
+        life: gsap.utils.random(60, 120), // Corrected: life should start at maxLife
         maxLife: gsap.utils.random(60, 120), // frames
         color: baseColor
       };
@@ -95,8 +95,8 @@ const AnimatedBackground: React.FC = () => {
       duration: 0.5,
       ease: 'power2.out',
       onComplete: () => {
-        if (container.contains(flash)) {
-          container.removeChild(flash);
+        if (flash.parentNode) {
+            flash.parentNode.removeChild(flash);
         }
       }
     });
@@ -200,7 +200,7 @@ const AnimatedBackground: React.FC = () => {
     }
 
     // Enhanced GSAP animations for background shapes
-    shapes.forEach((shape, index) => {
+    shapes.forEach((shape) => {
       // Main movement animation
       gsap.to(shape, {
         x: gsap.utils.random(-200, 200),
@@ -240,7 +240,7 @@ const AnimatedBackground: React.FC = () => {
     container.addEventListener('click', handleClick);
     
     // Start firework animation loop
-    animateFireworks();
+    animationFrame.current = requestAnimationFrame(animateFireworks);
 
     // Cleanup function
     return () => {
@@ -344,12 +344,13 @@ const sportsData = [
   
 ];
 
-type Sport = { name: string; imageUrl: string; rules: string[]; };
+type Sport = { name: string; imageUrl: string; rules: string[]; rulebook_url: string; };
 
 // ============================================================================
 // 3. SPORT MODAL COMPONENT
 // ============================================================================
-const SportModal: React.FC<{ sport: Sport | null; onClose: () => void; rulebookUrl: string }> = ({ sport, onClose, rulebookUrl: rulebook_url }) => {
+// Minor cleanup: removed redundant `rulebook_url: rulebook_url`
+const SportModal: React.FC<{ sport: Sport | null; onClose: () => void; rulebook_url: string }> = ({ sport, onClose, rulebook_url }) => {
   if (!sport) return null;
 
   return (
@@ -409,11 +410,11 @@ const SportModal: React.FC<{ sport: Sport | null; onClose: () => void; rulebookU
           <div className="modal-body">
             <div className="modal-rules">
                 <h4>Participation Rules</h4>
-                <ul>{sport.rules.map((rule, index) => <li key={index}>{rule}</li>)}</ul>
+                <ul>{sport.rules.filter(rule => rule).map((rule, index) => <li key={index}>{rule}</li>)}</ul>
             </div>
           </div>
           <div className="modal-footer" style={{ textAlign: 'center' }}>
-            <a href={rulebook_url} className="rulebook-link" target="_blank" rel="noopener noreferrer" style={{ backgroundColor: 'red' }}>
+            <a href={rulebook_url} className="rulebook-link" target="_blank" rel="noopener noreferrer">
               View Full Rulebook
             </a>
           </div>
@@ -428,7 +429,6 @@ const SportModal: React.FC<{ sport: Sport | null; onClose: () => void; rulebookU
 // ============================================================================
 const EventsPage: React.FC = () => {
   const [selectedSport, setSelectedSport] = useState<Sport | null>(null);
-  const RULEBOOK_URL = "#"; // TODO: Replace with your actual rulebook URL
 
   const handleCardClick = (sport: Sport) => setSelectedSport(sport);
   const handleCloseModal = () => setSelectedSport(null);
@@ -532,9 +532,14 @@ const EventsPage: React.FC = () => {
         </section>
       </div>
       
-      <SportModal sport={selectedSport} onClose={handleCloseModal} rulebookUrl={RULEBOOK_URL} />
+      <SportModal 
+        sport={selectedSport} 
+        onClose={handleCloseModal} 
+        rulebook_url={selectedSport?.rulebook_url || '#'} 
+      />
     </>
   );
 };
 
+// ✅ THIS IS THE FIX: Export the page component as the default.
 export default EventsPage;
