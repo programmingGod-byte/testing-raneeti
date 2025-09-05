@@ -3,8 +3,8 @@ import React, { useState, useLayoutEffect, useRef, useCallback } from 'react';
 import { gsap } from 'gsap';
 
 // You will need to have a Navbar component at this path
-// import { Navbar } from "@/components/navbar";
-// Placeholder Navbar component for this example
+// NOTE: Make sure your Navbar component is a NAMED export, like `export const Navbar = ...`
+// If it's a default export, this import should be: `import Navbar from "@/components/navbar";`
 import { Navbar } from "@/components/navbar";
 
 // ============================================================================
@@ -67,7 +67,7 @@ const AnimatedBackground: React.FC = () => {
         element: particle,
         vx,
         vy,
-        life: 1,
+        life: gsap.utils.random(60, 120), // Corrected: life should start at maxLife
         maxLife: gsap.utils.random(60, 120), // frames
         color: baseColor
       };
@@ -95,8 +95,8 @@ const AnimatedBackground: React.FC = () => {
       duration: 0.5,
       ease: 'power2.out',
       onComplete: () => {
-        if (container.contains(flash)) {
-          container.removeChild(flash);
+        if (flash.parentNode) {
+            flash.parentNode.removeChild(flash);
         }
       }
     });
@@ -200,7 +200,7 @@ const AnimatedBackground: React.FC = () => {
     }
 
     // Enhanced GSAP animations for background shapes
-    shapes.forEach((shape, index) => {
+    shapes.forEach((shape) => {
       // Main movement animation
       gsap.to(shape, {
         x: gsap.utils.random(-200, 200),
@@ -240,7 +240,7 @@ const AnimatedBackground: React.FC = () => {
     container.addEventListener('click', handleClick);
     
     // Start firework animation loop
-    animateFireworks();
+    animationFrame.current = requestAnimationFrame(animateFireworks);
 
     // Cleanup function
     return () => {
@@ -279,66 +279,78 @@ const sportsData = [
     name: 'Athletics',
     imageUrl: 'https://live.staticflickr.com/65535/52312199966_4be79e7e75_w.jpg',
     rules: ["No specific limit on participants per institute.","Please refer to the rulebook for individual event entry limits."],
+    rulebook_url: '#',
   },
   {
     name: 'Badminton',
     imageUrl: 'https://live.staticflickr.com/65535/52345655636_fa9218d45e_n.jpg',
     rules: ["Men's Team: Max 5 players.", "Women's Team: Max 4 players."],
+    rulebook_url: '/rulebooks/Badminton.pdf',
   },
   {
     name: 'Basketball',
     imageUrl: 'https://live.staticflickr.com/65535/52312513238_7aeba39a52_w.jpg',
     rules: ["Men's Team: Max 11 players.", "Women's Team: Max 10 players."],
+    rulebook_url: '/rulebooks/Basketball.pdf',
   },
   {
     name: 'Chess',
     imageUrl: 'https://live.staticflickr.com/65535/52345960989_e9bca2e00d_z.jpg',
     rules: ["Team Size: Max 5 players (4 players + 1 standby)."],
+    rulebook_url: '/rulebooks/Chess.pdf',
   },
   {
     name: 'Cricket',
     imageUrl: 'https://live.staticflickr.com/65535/52345655506_afcbbc0b43_w.jpg',
     rules: ["Team Size: Max 16 players."],
+    rulebook_url: '/rulebooks/Cricket.pdf',
   },
   {
     name: 'Football',
     imageUrl: 'https://live.staticflickr.com/65535/52346081405_d8c1db4e64_w.jpg',
     rules: ["Team Size: Max 16 players."],
+    rulebook_url: '/rulebooks/Football.pdf',
   },
   {
     name: 'Hockey',
     imageUrl: 'https://live.staticflickr.com/65535/52312512833_16e26e1003_w.jpg',
     rules: ["Team Size: Max 15 players."],
+    rulebook_url: '/rulebooks/Hockey.pdf',
   },
   {
     name: 'Table Tennis',
     imageUrl: 'https://live.staticflickr.com/65535/52312512833_16e26e1003_w.jpg',
     rules: [""],
+    rulebook_url: '/rulebooks/Table_Tennis.pdf',
   },
   {
     name: 'Squash',
     imageUrl: '/squash.png',
     rules: [""],
+    rulebook_url: '#',
   },
   {
     name: 'esports',
     imageUrl: '/esports.png',
     rules: [""],
+    rulebook_url: '#',
   },
   {
     name: 'Lawn tennis',
     imageUrl: '/lawn_tennis.png',
     rules: [""],
+    rulebook_url: '/rulebooks/Lawn_Tennis.pdf',
   },
   
 ];
 
-type Sport = { name: string; imageUrl: string; rules: string[]; };
+type Sport = { name: string; imageUrl: string; rules: string[]; rulebook_url: string; };
 
 // ============================================================================
 // 3. SPORT MODAL COMPONENT
 // ============================================================================
-const SportModal: React.FC<{ sport: Sport | null; onClose: () => void; rulebookUrl: string }> = ({ sport, onClose, rulebookUrl }) => {
+// Minor cleanup: removed redundant `rulebook_url: rulebook_url`
+const SportModal: React.FC<{ sport: Sport | null; onClose: () => void; rulebook_url: string }> = ({ sport, onClose, rulebook_url }) => {
   if (!sport) return null;
 
   return (
@@ -398,11 +410,11 @@ const SportModal: React.FC<{ sport: Sport | null; onClose: () => void; rulebookU
           <div className="modal-body">
             <div className="modal-rules">
                 <h4>Participation Rules</h4>
-                <ul>{sport.rules.map((rule, index) => <li key={index}>{rule}</li>)}</ul>
+                <ul>{sport.rules.filter(rule => rule).map((rule, index) => <li key={index}>{rule}</li>)}</ul>
             </div>
           </div>
           <div className="modal-footer" style={{ textAlign: 'center' }}>
-            <a href={rulebookUrl} className="rulebook-link" target="_blank" rel="noopener noreferrer" style={{ backgroundColor: 'red' }}>
+            <a href={rulebook_url} className="rulebook-link" target="_blank" rel="noopener noreferrer">
               View Full Rulebook
             </a>
           </div>
@@ -417,7 +429,6 @@ const SportModal: React.FC<{ sport: Sport | null; onClose: () => void; rulebookU
 // ============================================================================
 const EventsPage: React.FC = () => {
   const [selectedSport, setSelectedSport] = useState<Sport | null>(null);
-  const RULEBOOK_URL = "#"; // TODO: Replace with your actual rulebook URL
 
   const handleCardClick = (sport: Sport) => setSelectedSport(sport);
   const handleCloseModal = () => setSelectedSport(null);
@@ -521,9 +532,14 @@ const EventsPage: React.FC = () => {
         </section>
       </div>
       
-      <SportModal sport={selectedSport} onClose={handleCloseModal} rulebookUrl={RULEBOOK_URL} />
+      <SportModal 
+        sport={selectedSport} 
+        onClose={handleCloseModal} 
+        rulebook_url={selectedSport?.rulebook_url || '#'} 
+      />
     </>
   );
 };
 
+// ✅ THIS IS THE FIX: Export the page component as the default.
 export default EventsPage;
