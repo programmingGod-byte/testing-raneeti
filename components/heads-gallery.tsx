@@ -28,23 +28,28 @@ interface TeamData {
 // --- 2. TEAM DATA STRUCTURE ---
 const initialTeamsData: TeamData = {
   "Convener": [
-    { id: 39, name: "Jeet Kapoor", imageUrl: "/images/E42918DB-585C-4F31-9ED1-73ADFFF97A06 - Jeet Kapoor IIT Mandi.jpeg", role: "Convener", icon: "crown", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } }
+    { id: 39, name: "Jeet Kapoor", imageUrl: "/images/E42918DB-585C-4F31-9ED1-73ADFFF97A06 - Jeet Kapoor IIT Mandi.jpeg", role: "Convener", icon: "crown", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
+    { id: 40, name: "Jatin", imageUrl: "/images/image.png", role: "Convenor", icon: "crown", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
+    { id: 41, name: "Suyash Bilmore", imageUrl: "/images/suyash.png", role: "Co-convenor", icon: "crown", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } }
   ],
   "Secretary": [
-    { id: 38, name: "Divyanshu Raj", imageUrl: "/images/1755419777955~3 - Divyanshu Raj.jpg", role: "Organizing Secretary", icon: "trophy", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } }
+    { id: 38, name: "Divyanshu Raj", imageUrl: "/images/1755419777955~3 - Divyanshu Raj.jpg", role: "Organizing Secretary", icon: "trophy", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
+    { id: 39, name: "Divyanshu ", imageUrl: "/images/divyanshu.png", role: "Executive Secretary", icon: "trophy", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } }
   ],
    
-  "Mentor Team": [
+  "Mentors": [
     { id: 14, name: "Gourav Chaudhary", imageUrl: "/images/IMG_20250314_202117_902 - Gourav Chaudhary.webp", role: "Mentor", icon: "users", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
     { id: 15, name: "Yugant Kanojiya", imageUrl: "/images/IMG-20250718-WA0007 - Yugant Kanojiya IIT Mandi.jpg", role: "Mentor", icon: "users", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
-    { id: 20, name: "Mannepalli Samhitha", imageUrl: "/images/IMG-20250728-WA0016~2 - Mannepalli Samhitha IIT Mandi.jpg", role: "Member", icon: "clipboard", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
-    
+    { id: 20, name: "Mannepalli Samhitha", imageUrl: "/images/IMG-20250728-WA0016~2 - Mannepalli Samhitha IIT Mandi.jpg", role: "Mentor", icon: "clipboard", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
+    { id: 42, name: "Namita Singh", imageUrl: "/images/namitaa.png", role: "Publicity & Media Mentor", icon: "users", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
+    { id: 43, name: "Kishan Kumar Alwariya", imageUrl: "/images/kisan.png", role: "Overall Mentor", icon: "users", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } }
   ],
-  "Finance Head": [
-    { id: 8, name: "Arani Ghosh", imageUrl: "/images/IMG-20241102-WA0001 - Arani Ghosh.jpg", role: "Finance Head", icon: "coffee", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
+  "Finance Team": [
+    { id: 8, name: "Arani Ghosh", imageUrl: "/images/IMG-20241102-WA0001 - Arani Ghosh.jpg", role: "Member", icon: "coffee", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
   ],
   
   "Hospitality Team": [
+    { id: 11, name: "Aditya Tayal", imageUrl: "/images/aditya.png", role: "Member", icon: "coffee", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
     { id: 12, name: "Vansh Goel", imageUrl: "/images/IMG-20250812-WA0004 - VANSH GOEL.jpg", role: "Member", icon: "coffee", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
     { id: 9, name: "Vani Dhiman", imageUrl: "/images/Vani_B23505 - Vani Dhiman.jpg", role: "Member", icon: "coffee", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
     { id: 10, name: "Arpit Mishra", imageUrl: "/images/IMG_20250811_175835 - ARPIT MISHRA.jpg", role: "Member", icon: "coffee", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
@@ -53,7 +58,7 @@ const initialTeamsData: TeamData = {
   ],
   "Photography and Videography Team": [
     { id: 1, name: "Aaditya", imageUrl: "/images/IMG_20250727_002637 - AADITYA ,.jpg", role: "Member", icon: "settings", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
-    { id: 2, name: "Yash Sharma", imageUrl: "/images/IMG_3068(2) - Yash Sharma.heic", role: "Member", icon: "settings", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
+    { id: 2, name: "Yash Sharma", imageUrl: "/images/IMG_3068(2) - Yash Sharma.jpg", role: "Member", icon: "settings", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
     { id: 3, name: "Pari", imageUrl: "/images/Snapchat-1185299107 - PARI ,.jpg", role: "Member", icon: "settings", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
   ],
   "Publicity & Media Team": [
@@ -71,11 +76,12 @@ const initialTeamsData: TeamData = {
     { id: 25, name: "Tanishq Srivastava", imageUrl: "/images/My pic in suit - TANISHQ SRIVASTAVA.jpeg", role: "Member", icon: "dollar-sign", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
     { id: 26, name: "Anand Swaroop", imageUrl: "/images/IMG-20250724-WA0026 - Anand Swaroop.jpg", role: "Member", icon: "dollar-sign", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
     { id: 27, name: "Ojasvi Jain", imageUrl: "/images/IMG-20250401-WA0065-1 - OJASVI JAIN.jpg", role: "Member", icon: "dollar-sign", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
-    { id: 28, name: "Pragy Bohra", imageUrl: "/images/IMG_20250817_234642 - PRAGY BOHRA.jpg", role: "Member", icon: "dollar-sign", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } }
+    { id: 29, name: "Pragy Bohra", imageUrl: "/images/pragya.png", role: "Member", icon: "dollar-sign", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
+    { id: 28, name: "Sameer Batra", imageUrl: "/images/sameer.png", role: "Member", icon: "dollar-sign", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } }
   ],
   "Security Team": [
-    { id: 29, name: "Vidisha Thokal", imageUrl: "/images/IMG-20250811-WA0110 - THOKAL VIDISHA ATMARAM.jpg", role: "Member", icon: "shield", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
-    { id: 30, name: "Uditya", imageUrl: "/images/IMG_5626 - UDITYA ,.jpeg", role: "Member", icon: "shield", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
+    { id: 29, name: "Uditya", imageUrl: "/images/IMG_5626 - UDITYA ,.jpeg", role: "Member", icon: "shield", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
+    { id: 30, name: "Vidisha Thokal", imageUrl: "/images/IMG-20250811-WA0110 - THOKAL VIDISHA ATMARAM.jpg", role: "Member", icon: "shield", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
     { id: 31, name: "Sanyam Dhiman", imageUrl: "/images/IMG-20241106-WA0017~2 - SANYAM DHIMAN.jpg", role: "Member", icon: "shield", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
     { id: 32, name: "Yash Verma", imageUrl: "/images/IMG-20250704-WA0130 - Yash Verma.jpg", role: "Member", icon: "shield", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
     { id: 33, name: "Abhishek", imageUrl: "/images/IMG_20250811_231629_868~2 - ABHISHEK ,.jpg", role: "Member", icon: "shield", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } }
@@ -88,8 +94,8 @@ const initialTeamsData: TeamData = {
     { id: 36, name: "Saanvi Mendiratta", imageUrl: "/images/IMG_3055 - SAANVI MENDIRATTA.jpeg", role: "Member", icon: "pen-tool", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } }
   ],
   "Decor Team": [
-    { id: 37, name: "Mihir Yadav", imageUrl: "/images/1000035818 - MIHIR YADAV.jpg", role: "Member", icon: "sun", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } }
-  ],
+    { id: 53, name: "Anushka Tomar", imageUrl: "/images/anushka.png", role: "Member", icon: "star", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } }
+  ]
   
   
 }
@@ -182,7 +188,7 @@ function MemberCard({ member, index, removeCard, totalCards }: CardProps) {
             onError={(e) => {
               console.error(`Failed to load image: ${encodedImageUrl}`);
               // Fallback to a placeholder or default image
-              (e.target as HTMLImageElement).src = '/images/placeholder.png';
+              // (e.target as HTMLImageElement).src = '/images/placeholder.png';
             }}
           />
         </div>

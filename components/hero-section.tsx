@@ -11,8 +11,17 @@ export function HeroSection() {
   const eventDate = new Date("2025-10-10T00:00:00");
   
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(eventDate));
+  const [isMobile, setIsMobile] = useState(false);
 
-  // GSAP animation logic (no changes needed here)
+  useEffect(() => {
+    const checkDeviceSize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkDeviceSize();
+    window.addEventListener("resize", checkDeviceSize);
+    return () => window.removeEventListener("resize", checkDeviceSize);
+  }, []);
+
   useEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline();
@@ -37,7 +46,6 @@ export function HeroSection() {
     return () => ctx.revert();
   }, []);
 
-  // Countdown timer logic (no changes needed here)
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft(eventDate));
@@ -66,28 +74,36 @@ export function HeroSection() {
   }
   
   return (
-    // MODIFICATION: Removed vertical padding 'py-20'. The section now uses the full screen height.
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Video & Overlay */}
       <div className="absolute inset-0 z-0">
-        <video 
-          autoPlay 
-          muted 
-          playsInline 
-          loop
-          poster="/final_mobile.png"
-          className="w-full h-full object-cover"
-        >
-          <source src="/Final.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        {
+          // --- PROBLEM SOLVED ---
+          // This logic is now correct.
+          // If isMobile is true, show the lightweight <img>.
+          // If isMobile is false (desktop), show the <video>.
+          isMobile ? (
+            <img src="/final_mobile.png" alt="Hero Background" className="w-full h-full object-cover" />
+          ) : (
+            <video 
+              autoPlay 
+              muted 
+              playsInline 
+              loop
+              // It's good practice to have a poster for the desktop video too
+              poster="/final_desktop.png" 
+              className="w-full h-full object-cover"
+            >
+              <source src="/Final.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          )
+        }
         <div className="absolute inset-0 bg-black/60" />
       </div>
       
       <div 
         ref={heroContentRef} 
-        // MODIFICATION: Added padding top to account for a potential navbar (e.g., pt-16 or pt-20).
-        // Reduced vertical gap between elements for a tighter fit on small screens.
         className="relative z-10 flex flex-col items-center justify-center text-center text-white w-full max-w-5xl mx-auto px-4 pt-16 sm:pt-0"
       >
         <div className="flex flex-col items-center">
@@ -107,13 +123,11 @@ export function HeroSection() {
           </div>
 
           <div className="mask-container">
-            {/* MODIFICATION: Adjusted margins for better spacing on mobile. */}
             <p className="animate-masked-text text-base sm:text-lg md:text-xl mb-6 md:mb-8 text-gray-200 max-w-2xl mx-auto leading-relaxed">
               Embrace the Spirit of the Gods. Join IIT Mandi's ultimate sports festival where legends are born and champions rise.
             </p>
           </div>
 
-          {/* MODIFICATION: Reduced bottom margin. */}
           <div className="animate-buttons flex flex-col sm:flex-row gap-4 justify-center items-center mb-6 md:mb-8">
             <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8 py-3">
               <Link href="/register" className="flex items-center gap-2">
@@ -136,7 +150,6 @@ export function HeroSection() {
         </div>
 
         {/* --- Countdown Timer --- */}
-        {/* MODIFICATION: Reduced top margin to pull the countdown closer. */}
         <div className="animate-countdown w-full max-w-lg mt-4 md:mt-6">
           <div className="bg-black/20 backdrop-blur-sm p-4 sm:p-6 rounded-xl border border-white/10 shadow-lg">
             <div className="flex items-center justify-center gap-2 sm:gap-4">
