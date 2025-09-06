@@ -312,6 +312,12 @@ const sportsData = [
     rulebook_url: '/rulebooks/Football.pdf',
   },
   {
+    name: 'Volleyball',
+    imageUrl: '/Volleyball.png',
+    rules: [""],
+    rulebook_url: '/rulebooks/Volleyball.pdf',
+  },
+  {
     name: 'Hockey',
     imageUrl: 'https://live.staticflickr.com/65535/52312512833_16e26e1003_w.jpg',
     rules: ["Team Size: Max 15 players."],
