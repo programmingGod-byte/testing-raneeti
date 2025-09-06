@@ -1,6 +1,32 @@
 import { NextResponse } from "next/server"
 import { getAdminSession } from "@/lib/admin-auth"
-import { getAllUsers } from "@/lib/database-operations" // We only need getAllUsers for this operation
+import { getAllUsers } from "@/lib/database-operations"
+
+// Single source of truth for all sports-related data.
+// 'key' must match the property name in the database/schema.
+// 'header' is the user-friendly column name for the CSV file.
+const sportsConfig = [
+  { key: 'cricket', header: 'Cricket' },
+  { key: 'football', header: 'Football' },
+  { key: 'hockey', header: 'Hockey' },
+  { key: 'chess', header: 'Chess' },
+  { key: 'volleyballMen', header: '"Volleyball (Men)"' },
+  { key: 'volleyballWomen', header: '"Volleyball (Women)"' },
+  { key: 'basketballMen', header: '"Basketball (Men)"' },
+  { key: 'basketballWomen', header: '"Basketball (Women)"' },
+  { key: 'badmintonMen', header: '"Badminton (Men)"' },
+  { key: 'badmintonWomen', header: '"Badminton (Women)"' },
+  { key: 'tableTennisMen', header: '"Table Tennis (Men)"' },
+  { key: 'tableTennisWomen', header: '"Table Tennis (Women)"' },
+  { key: 'lawnTennisMen', header: '"Lawn Tennis (Men)"' },
+  { key: 'lawnTennisWomen', header: '"Lawn Tennis (Women)"' },
+  { key: 'squashMen', header: '"Squash (Men)"' },
+  { key: 'squashWomen', header: '"Squash (Women)"' },
+  { key: 'athleticsMen', header: '"Athletics (Men)"' },
+  { key: 'athleticsWomen', header: '"Athletics (Women)"' },
+  { key: 'esportsMen', header: '"Esports (Men)"' },
+  { key: 'esportsWomen', header: '"Esports (Women)"' },
+];
 
 export async function GET() {
   try {
@@ -11,39 +37,23 @@ export async function GET() {
 
     const allUsers = await getAllUsers()
 
-    // Define specific headers for each sport, wrapping those with commas in quotes
-    const sportHeaders = [
-      "Cricket", '"Badminton (Men)"', '"Badminton (Women)"', '"Volleyball (Men)"', '"Volleyball (Women)"',
-      "Football", "Hockey", '"Basketball (Men)"', '"Basketball (Women)"', '"Table Tennis (Men)"',
-      '"Table Tennis (Women)"', "Chess", '"Lawn Tennis (Men)"', '"Lawn Tennis (Women)"', "Athletics"
-    ];
+    // Dynamically generate sport headers from the config array
+    const sportHeaders = sportsConfig.map(sport => sport.header).join(",")
     
-    const csvHeaders = `Name,Email,Phone,College,${sportHeaders.join(",")}\n`
+    const csvHeaders = `Name,Email,Phone,College,${sportHeaders}\n`
 
     const csvData = allUsers
       .map((user) => {
-        // Helper function to escape commas within fields to maintain CSV integrity
+        // Helper function to escape commas and quotes for CSV compatibility
         const escape = (str: string | undefined | null) => `"${(str || '').replace(/"/g, '""')}"`;
 
-        // Safely access sports data, providing a default of 0 if not present
         const sports = user.sports || {};
-        const sportValues = [
-          sports.cricket || 0,
-          sports.badmintonMen || 0,
-          sports.badmintonWomen || 0,
-          sports.volleyballMen || 0,
-          sports.volleyballWomen || 0,
-          sports.football || 0,
-          sports.hockey || 0,
-          sports.basketballMen || 0,
-          sports.basketballWomen || 0,
-          sports.tableTennisMen || 0,
-          sports.tableTennisWomen || 0,
-          sports.chess || 0,
-          sports.lawnTennisMen || 0,
-          sports.lawnTennisWomen || 0,
-          sports.athletics || 0,
-        ];
+
+        // Dynamically generate sport values in the correct order using the config array
+        const sportValues = sportsConfig.map(sportConfigItem => {
+          // Use bracket notation to access property via the key from our config
+          return sports[sportConfigItem.key] || 0;
+        });
 
         const userData = [
           escape(user.name),
@@ -52,7 +62,7 @@ export async function GET() {
           escape(user.collegeName),
         ];
 
-        // Combine user data with the individual sport counts
+        // Combine user data with the dynamic sport counts
         return [...userData, ...sportValues].join(",")
       })
       .join("\n")
@@ -60,6 +70,7 @@ export async function GET() {
     const csv = csvHeaders + csvData
 
     return new NextResponse(csv, {
+      status: 200,
       headers: {
         "Content-Type": "text/csv",
         "Content-Disposition": "attachment; filename=user-registrations-detailed.csv",
