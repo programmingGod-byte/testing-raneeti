@@ -319,7 +319,7 @@ const sportsData = [
   },
   {
     name: 'Table Tennis',
-    imageUrl: 'https://live.staticflickr.com/65535/52312512833_16e26e1003_w.jpg',
+    imageUrl: '/table_tennis.png',
     rules: [""],
     rulebook_url: '/rulebooks/Table_Tennis.pdf',
   },
