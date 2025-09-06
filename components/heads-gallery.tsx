@@ -40,10 +40,10 @@ const initialTeamsData: TeamData = {
   "Mentors": [
     { id: 14, name: "Gourav Chaudhary", imageUrl: "/images/IMG_20250314_202117_902 - Gourav Chaudhary.webp", role: "Overall Mentor", icon: "users", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
     { id: 15, name: "Yugant Kanojiya", imageUrl: "/images/IMG-20250718-WA0007 - Yugant Kanojiya IIT Mandi.jpg", role: "Decor Mentor", icon: "users", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
-    { id: 20, name: "Mannepalli Samhitha", imageUrl: "/images/IMG-20250728-WA0016~2 - Mannepalli Samhitha IIT Mandi.jpg", role: "Planning and Management mentor Mentor", icon: "clipboard", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
+    { id: 20, name: "Mannepalli Samhitha", imageUrl: "/images/IMG-20250728-WA0016~2 - Mannepalli Samhitha IIT Mandi.jpg", role: "Planning and Management  Mentor", icon: "clipboard", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
     { id: 42, name: "Namita Singh", imageUrl: "/images/namitaa.png", role: "Publicity & Media Mentor", icon: "users", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
     { id: 43, name: "Kishan Kumar Alwariya", imageUrl: "/images/kisan.png", role: "Overall Mentor", icon: "users", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
-      { id: 143, name: "Nischay", imageUrl: "/images/Nischay.png", role: " Security Ment", icon: "users", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
+      { id: 143, name: "Nischay", imageUrl: "/images/Nischay.png", role: " Security Mentor", icon: "users", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
       { id: 11, name: "Aditya Tayal", imageUrl: "/images/aditya.png", role: "Hospitality Mentor", icon: "coffee", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
        { id: 161, name: "Piyush Roy", imageUrl: "/images/piyush.png", role: "Sponsorship Mentor", icon: "coffee", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
     
