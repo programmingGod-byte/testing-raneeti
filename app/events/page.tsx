@@ -419,7 +419,7 @@ const SportModal: React.FC<{ sport: Sport | null; onClose: () => void; rulebook_
                 <ul>{sport.rules.filter(rule => rule).map((rule, index) => <li key={index}>{rule}</li>)}</ul>
             </div>
           </div>
-          { rulebook_url && <div className="modal-footer" style={{ textAlign: 'center' }}>
+          { rulebook_url!="#" && <div className="modal-footer" style={{ textAlign: 'center' }}>
             <a href={rulebook_url} className="rulebook-link" target="_blank" rel="noopener noreferrer">
               View Full Rulebook
             </a>
