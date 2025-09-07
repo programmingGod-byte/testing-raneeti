@@ -29,8 +29,8 @@ interface TeamData {
 const initialTeamsData: TeamData = {
   "Convener & Co-Convener": [
     { id: 1, name: "Jeet Kapoor", imageUrl: "/images/E42918DB-585C-4F31-9ED1-73ADFFF97A06 - Jeet Kapoor IIT Mandi.jpeg", role: "Convener", icon: "crown", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
-    { id: 2, name: "Suyash Bilmore", imageUrl: "/images/suyash.png", role: "Co-Convener", icon: "crown", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
     { id: 3, name: "Jatin", imageUrl: "/images/image.png", role: "Convener", icon: "crown", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
+    { id: 2, name: "Suyash Bilmore", imageUrl: "/images/suyash.png", role: "Co-Convener", icon: "crown", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
   ],
   "Secretaries": [
     { id: 4, name: "Divyanshu Raj", imageUrl: "/images/1755419777955~3 - Divyanshu Raj.jpg", role: "Organizing Secretary", icon: "trophy", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
@@ -39,13 +39,13 @@ const initialTeamsData: TeamData = {
   
   "Mentors": [
     { id: 6, name: "Gourav Chaudhary", imageUrl: "/images/IMG_20250314_202117_902 - Gourav Chaudhary.webp", role: "Overall Mentor", icon: "users", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
-    { id: 7, name: "Yugant Kanojiya", imageUrl: "/images/IMG-20250718-WA0007 - Yugant Kanojiya IIT Mandi.jpg", role: "Decor Mentor", icon: "users", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
-    { id: 8, name: "Mannepalli Samhitha", imageUrl: "/images/IMG-20250728-WA0016~2 - Mannepalli Samhitha IIT Mandi.jpg", role: "Planning and Management Mentor", icon: "clipboard", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
-    { id: 9, name: "Namita Singh", imageUrl: "/images/namita.png", role: "Publicity & Media Mentor", icon: "users", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
-    { id: 10, name: "Kishan Kumar Alwariya", imageUrl: "/images/kishan.png", role: "Overall Mentor", icon: "users", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
-    { id: 11, name: "Nischay", imageUrl: "/images/Nischay.png", role: " Security Mentor", icon: "users", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
+    { id: 7, name: "Kishan Kumar Alwariya", imageUrl: "/images/kishan.png", role: "Overall Mentor", icon: "users", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
+    { id: 8, name: "Namita Singh", imageUrl: "/images/namita.png", role: "Publicity & Media Mentor", icon: "users", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
+    { id: 9, name: "Piyush Roy", imageUrl: "/images/piyush.png", role: "Sponsorship Mentor", icon: "coffee", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
+    { id: 10, name: "Yugant Kanojiya", imageUrl: "/images/IMG-20250718-WA0007 - Yugant Kanojiya IIT Mandi.jpg", role: "Decor Mentor", icon: "users", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
+    { id: 11, name: "Mannepalli Samhitha", imageUrl: "/images/IMG-20250728-WA0016~2 - Mannepalli Samhitha IIT Mandi.jpg", role: "Planning and Management Mentor", icon: "clipboard", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
     { id: 12, name: "Aditya Tayal", imageUrl: "/images/aditya.png", role: "Hospitality Mentor", icon: "coffee", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
-    { id: 13, name: "Piyush Roy", imageUrl: "/images/piyush.png", role: "Sponsorship Mentor", icon: "coffee", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
+    { id: 13, name: "Nischay", imageUrl: "/images/Nischay.png", role: " Security Mentor", icon: "users", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
     
   ],
   "Finance Head": [
