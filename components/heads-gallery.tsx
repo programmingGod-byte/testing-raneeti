@@ -65,9 +65,9 @@ const initialTeamsData: TeamData = {
     { id: 22, name: "Pari", imageUrl: "/images/Snapchat-1185299107 - PARI ,.jpg", role: "", icon: "settings", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
   ],
   "Publicity & Media Team": [
-    { id: 23, name: "Shriyaansh Gupta", imageUrl: "/images/Screenshot_2025-08-11-22-17-30-80_965bbf4d18d205f782c6b8409c5773a4 - SHRIYAANSH GUPTA.jpg", role: "", icon: "megaphone", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
-    { id: 24, name: "Rudraksh Rajendra Lande", imageUrl: "/images/IMG_20250728_161824 - Rudraksh Rajendra Lande.jpg", role: "", icon: "megaphone", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
-    { id: 25, name: "Vivek Choudhary", imageUrl: "/images/IMG_20250731_222228_455 - Vivek Kumar Choudhary.webp", role: "", icon: "megaphone", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } }
+    { id: 5, name: "Shriyaansh Gupta", imageUrl: "/images/Screenshot_2025-08-11-22-17-30-80_965bbf4d18d205f782c6b8409c5773a4 - SHRIYAANSH GUPTA.jpg", role: "Member", icon: "megaphone", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
+    { id: 6, name: "Rudraksh Rajendra Lande", imageUrl: "/images/IMG_20250728_161824 - Rudraksh Rajendra Lande.jpg", role: "Member", icon: "megaphone", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
+    { id: 7, name: "Vivek Choudhary", imageUrl: "/images/IMG_20250731_222228_455 - Vivek Kumar Choudhary.webp", role: "Member", icon: "megaphone", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } }
   ],
  
   "Planning & Management Team": [
@@ -94,7 +94,7 @@ const initialTeamsData: TeamData = {
     { id: 40, name: "Aakansha", imageUrl: "/images/IMG-20240929-WA0200 - AAKANSHA ,.jpg", role: "", icon: "book", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } }
   ],
   "Design Team": [
-    { id: 41, name: "Saanvi Mendiratta", imageUrl: "/images/IMG_3055 - SAANVI MENDIRATTA.jpeg", role: "", icon: "pen-tool", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } }
+    { id: 36, name: "Saanvi Mendiratta", imageUrl: "/images/IMG_3055 - SAANVI MENDIRATTA.jpeg", role: "Member", icon: "pen-tool", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } }
   ],
   "Decor Team": [
     { id: 42, name: "Anushka Tomar", imageUrl: "/images/anushka.png", role: "", icon: "star", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } }
