@@ -29,8 +29,8 @@ interface TeamData {
 const initialTeamsData: TeamData = {
   "Convener & Co-Convener": [
     { id: 1, name: "Jeet Kapoor", imageUrl: "/images/E42918DB-585C-4F31-9ED1-73ADFFF97A06 - Jeet Kapoor IIT Mandi.jpeg", role: "Convener", icon: "crown", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
-    { id: 3, name: "Jatin", imageUrl: "/images/image.png", role: "Convener", icon: "crown", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
-    { id: 2, name: "Suyash Bilmore", imageUrl: "/images/suyash.png", role: "Co-Convener", icon: "crown", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
+    { id: 2, name: "Jatin", imageUrl: "/images/image.png", role: "Convener", icon: "crown", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
+    { id: 3, name: "Suyash Bilmore", imageUrl: "/images/suyash.png", role: "Co-Convener", icon: "crown", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
   ],
   "Secretaries": [
     { id: 4, name: "Divyanshu Raj", imageUrl: "/images/1755419777955~3 - Divyanshu Raj.jpg", role: "Organizing Secretary", icon: "trophy", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
