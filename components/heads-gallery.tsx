@@ -80,7 +80,7 @@ const initialTeamsData: TeamData = {
     { id: 30, name: "Anand Swaroop", imageUrl: "/images/IMG-20250724-WA0026 - Anand Swaroop.jpg", role: "", icon: "dollar-sign", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
     { id: 31, name: "Ojasvi Jain", imageUrl: "/images/IMG-20250401-WA0065-1 - OJASVI JAIN.jpg", role: "", icon: "dollar-sign", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
     { id: 32, name: "Pragy Bohra", imageUrl: "/images/pragya.png", role: "", icon: "dollar-sign", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
-    { id: 33, name: "Sameer Batra", imageUrl: "/images/sameer.png", role: "", icon: "dollar-sign", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } }
+    { id: 33, name: "Sameer Batra", imageUrl: "/images/sameer.png", role: "", icon: "dollar-sign", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
     { id: 34, name: "Tanishq Srivastava", imageUrl: "/images/My pic in suit - TANISHQ SRIVASTAVA.jpeg", role: "", icon: "dollar-sign", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
   ],
   "Security Team": [
@@ -91,7 +91,7 @@ const initialTeamsData: TeamData = {
     { id: 39, name: "Abhishek", imageUrl: "/images/IMG_20250811_231629_868~2 - ABHISHEK ,.jpg", role: "", icon: "shield", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } }
   ],
   "Content Team": [
-    { id: 40, name: "Aakansha", imageUrl: "/images/IMG-20240929-WA0200 - AAKANSHA ,.jpg", role: "", icon: "book", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } }
+    { id: 40, name: "Aakansha", imageUrl: "/images/IMG-20240929-WA0200 - AAKANSHA ,.jpg", role: "", icon: "book", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
     { id: 41, name: "Samridhi Singh", imageUrl: "/images/IMG-20250811-WA0013 - SAMRIDHI SINGH.jpg", role: "", icon: "book", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
   ],
   "Design Team": [
