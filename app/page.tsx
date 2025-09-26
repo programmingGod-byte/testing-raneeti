@@ -3,8 +3,9 @@ import { HeroSection } from "@/components/hero-section"
 import { AboutFestival } from "@/components/about-festival"
 import { CollegeFacilities } from "@/components/college-facilities"
 
+
 import { ParticlesBackground } from "@/components/Particles" // Import the new component
-import {HeadsGallery} from "@/components/heads-gallery" // Import the heads gallery component
+import {HeadsGallery,Footer} from "@/components/heads-gallery" // Import the heads gallery component
 export default function HomePage() {
   return (
     // Add `relative` to contain the absolutely positioned particles
@@ -16,6 +17,7 @@ export default function HomePage() {
       <CollegeFacilities />
       
       <HeadsGallery/>
+      <Footer/>
     </main>
   )
 }

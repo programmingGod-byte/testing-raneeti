@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Code, Users, DollarSign, Megaphone, Trophy, Star } from "lucide-react"
+import { Code, Users, DollarSign, Megaphone, Trophy, Star, Instagram, Youtube, Phone, Mail } from "lucide-react" // Added new icons
 import { cn } from "@/lib/utils" // Assumes you have a utility for conditional classes
 import ColorThief from "colorthief"
 
@@ -44,7 +44,7 @@ const initialTeamsData: TeamData = {
     { id: 9, name: "Piyush Roy", imageUrl: "/images/piyush.png", role: "Sponsorship Mentor", icon: "coffee", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
     { id: 10, name: "Yugant Kanojiya", imageUrl: "/images/IMG-20250718-WA0007 - Yugant Kanojiya IIT Mandi.jpg", role: "Decor Mentor", icon: "users", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
     { id: 11, name: "Mannepalli Samhitha", imageUrl: "/images/IMG-20250728-WA0016~2 - Mannepalli Samhitha IIT Mandi.jpg", role: "Planning and Management Mentor", icon: "clipboard", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
-    { id: 12, name: "Aditya Tayal", imageUrl: "/images/aditya.png", role: "Hospitality Mentor", icon: "coffee", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
+    // { id: 12, name: "Aditya Tayal", imageUrl: "/images/aditya.png", role: "Hospitality Mentor", icon: "coffee", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
     { id: 13, name: "Nischay", imageUrl: "/images/Nischay.png", role: " Security Mentor", icon: "users", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
     
   ],
@@ -120,12 +120,9 @@ const getIconComponent = (iconName: string) => {
 
 // Helper function to encode image URLs
 const encodeImageUrl = (url: string) => {
-  // Split the URL to preserve the path structure
   const parts = url.split('/');
-  // Encode only the filename part (last part)
   const encodedParts = parts.map((part, index) => {
     if (index === parts.length - 1) {
-      // This is the filename, encode it
       return encodeURIComponent(part);
     }
     return part;
@@ -183,7 +180,6 @@ function MemberCard({ member, index, removeCard, totalCards }: CardProps) {
         className="relative flex h-full flex-col overflow-hidden rounded-2xl"
         style={{ color: member.colors.text }}
       >
-        {/* Use img tag instead of background-image for better control */}
         <div className="flex-grow w-full h-full relative overflow-hidden">
           <img
             src={encodedImageUrl}
@@ -191,8 +187,6 @@ function MemberCard({ member, index, removeCard, totalCards }: CardProps) {
             className="w-full h-full object-cover"
             onError={(e) => {
               console.error(`Failed to load image: ${encodedImageUrl}`);
-              // Fallback to a placeholder or default image
-              // (e.target as HTMLImageElement).src = '/images/placeholder.png';
             }}
           />
         </div>
@@ -347,3 +341,107 @@ export function HeadsGallery() {
     </section>
   );
 }
+
+
+// --- 5. FOOTER COMPONENT ---
+export function Footer() {
+  const year = new Date().getFullYear();
+
+  return (
+    <footer className="bg-gray-900 text-gray-400">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+          
+          {/* Column 1: Event Info */}
+          <div className="flex flex-col items-center md:items-start">
+            <h3 className="text-2xl font-bold text-white mb-2" style={{ fontFamily: 'GreekFont' }}>
+              RANN-NEETI
+            </h3>
+            <p className="max-w-xs">
+              The Annual Technical-Cultural Fest of IIT Mandi. Join us for an unforgettable experience.
+            </p>
+          </div>
+
+          {/* Column 2: Contact Information */}
+          <div>
+            <h4 className="text-lg font-semibold text-white mb-4">Contact Us</h4>
+            <div className="space-y-3">
+              <div className="flex items-center justify-center md:justify-start gap-3">
+                <Phone className="h-5 w-5 text-primary" />
+                <span>
+                  <strong>Jeet Kapoor (Convener):</strong>{" "}
+                  <a href="tel:+919211116470" className="hover:text-white transition-colors">+91-92111-16470</a>
+                </span>
+              </div>
+              <div className="flex items-center justify-center md:justify-start gap-3">
+                <Phone className="h-5 w-5 text-primary" />
+                <span>
+                  <strong>Suyash Bilmore (Co-Convener):</strong>{" "}
+                  <a href="tel:+917666142206" className="hover:text-white transition-colors">+91-76661-42206</a>
+                </span>
+              </div>
+               <div className="flex items-center justify-center md:justify-start gap-3">
+                <Phone className="h-5 w-5 text-primary" />
+                <a href="tel:+919485999199" className="hover:text-white transition-colors">
+                    Contact us : 9485999199
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Column 3: Social Media */}
+          <div>
+            <h4 className="text-lg font-semibold text-white mb-4">Follow Us</h4>
+            <div className="flex justify-center md:justify-start space-x-4">
+              <a 
+                href="https://www.instagram.com/rann_neeti.iitmandi/?hl=en" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                aria-label="Instagram"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                <Instagram className="h-8 w-8" />
+              </a>
+              {/* <a 
+                href="https://www.youtube.com/@ExodiaIITMandi" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                aria-label="YouTube"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                <Youtube className="h-8 w-8" />
+              </a> */}
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="mt-12 pt-8 border-t border-gray-800 text-center text-sm">
+          <p>&copy; {year} RANN - NEETI, IIT Mandi. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+/*
+  HOW TO USE:
+  You would typically add the <Footer /> component in your main layout or page file,
+  after the <HeadsGallery /> component.
+
+  Example Page Structure:
+
+  import { HeadsGallery } from './HeadsGallery'; // Adjust path as needed
+  import { Footer } from './Footer'; // Adjust path as needed
+
+  export default function OurTeamPage() {
+    return (
+      <div className="bg-background">
+        <main>
+          <HeadsGallery />
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+*/
