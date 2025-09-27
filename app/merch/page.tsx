@@ -3,45 +3,59 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { X, Eye, Phone } from 'lucide-react';
+import { X, Eye, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Navbar } from '@/components/navbar';
 
 const merchData = [
   {
     id: 1,
-    name: 'Fest Hoodie BACK',
+    name: 'Fest Hoodie',
     price: '₹899',
-    imageUrl: '/merch/1.png',
-    description: ''
+    imageUrls: ['/merch/2.png', '/merch/1.png'],
+    description: 'Stay warm and stylish with our premium fest hoodie.'
   },
   {
     id: 2,
-    name: 'Fest Hoodie FRONT',
-    price: '₹899',
-    imageUrl: '/merch/2.png',
-    description: ''
-  },
-  {
-    id: 3,
-    name: ' T-Shirt BACK',
+    name: 'Official T-Shirt',
     price: '₹449',
-    imageUrl: '/merch/3.png',
-    description: ''
-  },
-  {
-    id: 5,
-    name: ' T-Shirt FRONT',
-    price: '₹449',
-    imageUrl: '/merch/5.png',
-    description: ''
+    imageUrls: ['/merch/5.png', '/merch/3.png'],
+    description: 'The official tee of the fest, made with comfortable, breathable cotton.'
   },
 ];
 
-type MerchItem = typeof merchData[0];
+type MerchProduct = {
+  id: number;
+  name: string;
+  price: string;
+  imageUrls: string[];
+  description: string;
+};
 
 export default function EnhancedMerchandisePage() {
-  const [selectedMerch, setSelectedMerch] = useState<MerchItem | null>(null);
+  const [selectedMerch, setSelectedMerch] = useState<MerchProduct | null>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const handleOpenModal = (item: MerchProduct) => {
+    setSelectedMerch(item);
+    setCurrentImageIndex(0);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedMerch(null);
+  };
+
+  const showNextImage = () => {
+    if (selectedMerch) {
+      setCurrentImageIndex((prev) => (prev + 1) % selectedMerch.imageUrls.length);
+    }
+  };
+
+  const showPrevImage = () => {
+    if (selectedMerch) {
+      setCurrentImageIndex((prev) => (prev - 1 + selectedMerch.imageUrls.length) % selectedMerch.imageUrls.length);
+    }
+  };
 
   return (
     <>
@@ -60,23 +74,21 @@ export default function EnhancedMerchandisePage() {
             </p>
           </div>
 
-          {/* Merchandise Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
             {merchData.map((item) => (
               <div
                 key={item.id}
-                onClick={() => setSelectedMerch(item)}
-                className="group cursor-pointer"
+                onClick={() => handleOpenModal(item)}
+                className="group cursor-pointer col-span-1 sm:col-span-1 lg:col-span-2"
               >
                 <div className="relative rounded-lg overflow-hidden border-2 border-white/10 bg-gray-800/40 p-2 backdrop-blur-xl transition-all duration-300 hover:border-primary hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2">
                   <div className="relative w-full aspect-square overflow-hidden rounded-md">
                     <Image
-                      src={item.imageUrl}
+                      src={item.imageUrls[0]}
                       alt={item.name}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-110"
                     />
-                    {/* Hover overlay */}
                     <div className="absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="flex flex-col items-center text-white">
                         <Eye className="w-10 h-10 mb-2" />
@@ -93,11 +105,9 @@ export default function EnhancedMerchandisePage() {
             ))}
           </div>
 
-          {/* 🔥 Discounted Bundle Section */}
-          {/* 🔥 Discounted Bundle Section */}
           <div className="mt-20 text-center bg-[#0b121f] rounded-2xl p-10 shadow-lg border border-white">
             <h3 className="text-3xl md:text-4xl font-bold mb-4 text-white">
-              Special Combo Offer 
+              Special Combo Offer
             </h3>
             <p className="text-lg text-gray-200 mb-6">
               Get both the <span className="font-semibold text-primary">Hoodie</span> and <span className="font-semibold text-orange-400">T-Shirt</span> together for just
@@ -105,7 +115,6 @@ export default function EnhancedMerchandisePage() {
             <div className="text-4xl md:text-5xl font-extrabold text-green-400 mb-6">
               ₹1299
             </div>
-            {/* Order Now Button */}
             <a
               href="https://forms.gle/gxFSVBp2HahdKSkb6"
               target="_blank"
@@ -115,10 +124,9 @@ export default function EnhancedMerchandisePage() {
               Order Now
             </a>
           </div>
-
         </div>
 
-        {/* --- The Animated Modal --- */}
+        {/* Modal */}
         <AnimatePresence>
           {selectedMerch && (
             <motion.div
@@ -126,39 +134,49 @@ export default function EnhancedMerchandisePage() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
-              onClick={() => setSelectedMerch(null)}
+              onClick={handleCloseModal}
             >
               <motion.div
                 initial={{ scale: 0.9, y: 50 }}
                 animate={{ scale: 1, y: 0 }}
                 exit={{ scale: 0.9, y: 50 }}
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                className="relative bg-gray-900 border border-white/20 rounded-lg shadow-2xl w-11/12 max-w-6xl h-[90vh] flex flex-col items-center justify-center overflow-hidden"
+                className="relative bg-gray-900 border border-white/20 rounded-lg shadow-2xl w-11/12 max-w-5xl max-h-[90vh] flex flex-col overflow-hidden"
                 onClick={(e) => e.stopPropagation()}
               >
-                {/* Close Button */}
-                <button
-                  onClick={() => setSelectedMerch(null)}
-                  className="absolute top-4 right-4 z-10 p-2 rounded-full text-gray-300 bg-gray-700/50 hover:bg-gray-700 hover:text-white transition-colors"
-                  aria-label="Close"
-                >
-                  <X className="w-6 h-6" />
-                </button>
-
-                {/* Full Image */}
-                <div className="w-full h-full relative flex items-center justify-center">
+                {/* Image container */}
+                <div className="relative flex-grow flex items-center justify-center min-h-[500px]">
                   <Image
-                    src={selectedMerch.imageUrl}
-                    alt={selectedMerch.name}
+                    src={selectedMerch.imageUrls[currentImageIndex]}
+                    alt={`${selectedMerch.name} - view ${currentImageIndex + 1}`}
                     fill
-                    className="object-contain p-6"
+                    className="object-contain"
                   />
+
+                  {/* Left/Right arrows */}
+                  <button onClick={showPrevImage} className="absolute left-2 top-1/2 -translate-y-1/2 z-10 p-2 bg-black/40 rounded-full hover:bg-black/60">
+                    <ChevronLeft className="w-6 h-6 text-white" />
+                  </button>
+                  <button onClick={showNextImage} className="absolute right-2 top-1/2 -translate-y-1/2 z-10 p-2 bg-black/40 rounded-full hover:bg-black/60">
+                    <ChevronRight className="w-6 h-6 text-white" />
+                  </button>
+
+                  {/* Dots */}
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                    {selectedMerch.imageUrls.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setCurrentImageIndex(index)}
+                        className={`w-3 h-3 rounded-full transition-colors ${currentImageIndex === index ? 'bg-white' : 'bg-white/50 hover:bg-white/75'}`}
+                      />
+                    ))}
+                  </div>
                 </div>
 
-                {/* Contact Button in Modal */}
-
-                {/* Contact / Order Button below image in Modal */}
-                <div className="w-full flex justify-center p-6 border-t border-white/20 bg-gray-900">
+                {/* Details section */}
+                <div className="w-full text-center p-4 border-t border-white/20 flex-shrink-0">
+                  <h3 className="text-xl font-bold text-white">{selectedMerch.name}</h3>
+                  <p className="text-lg text-primary font-semibold mb-4">{selectedMerch.price}</p>
                   <a
                     href="https://forms.gle/gxFSVBp2HahdKSkb6"
                     target="_blank"
@@ -168,8 +186,6 @@ export default function EnhancedMerchandisePage() {
                     Order Now
                   </a>
                 </div>
-
-
               </motion.div>
             </motion.div>
           )}
