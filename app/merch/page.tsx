@@ -1,10 +1,10 @@
 // app/merchandise/page.tsx
-'use client'; 
+'use client';
 
 import { useState } from 'react';
 import Image from 'next/image';
 import { X, Eye, Phone } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion'; 
+import { motion, AnimatePresence } from 'framer-motion';
 import { Navbar } from '@/components/navbar';
 
 const merchData = [
@@ -24,14 +24,14 @@ const merchData = [
   },
   {
     id: 3,
-    name: 'Official T-Shirt BACK',
+    name: ' T-Shirt BACK',
     price: '₹449',
     imageUrl: '/merch/3.png',
     description: ''
   },
   {
     id: 5,
-    name: 'Official T-Shirt FRONT',
+    name: ' T-Shirt FRONT',
     price: '₹449',
     imageUrl: '/merch/5.png',
     description: ''
@@ -45,7 +45,7 @@ export default function EnhancedMerchandisePage() {
 
   return (
     <>
-      <Navbar/>
+      <Navbar />
       <section className="bg-gradient-to-b from-gray-900 to-black text-white min-h-screen py-20 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -94,6 +94,7 @@ export default function EnhancedMerchandisePage() {
           </div>
 
           {/* 🔥 Discounted Bundle Section */}
+          {/* 🔥 Discounted Bundle Section */}
           <div className="mt-20 text-center bg-[#0b121f] rounded-2xl p-10 shadow-lg border border-white">
             <h3 className="text-3xl md:text-4xl font-bold mb-4 text-white">
               Special Combo Offer 
@@ -104,29 +105,30 @@ export default function EnhancedMerchandisePage() {
             <div className="text-4xl md:text-5xl font-extrabold text-green-400 mb-6">
               ₹1299
             </div>
-            {/* Contact Button */}
+            {/* Order Now Button */}
             <a
-              href="tel:+919485999199"
+              href="https://forms.gle/gxFSVBp2HahdKSkb6"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-[#0b121f] text-white px-8 py-4 rounded-xl font-bold text-lg border border-white hover:bg-white hover:text-[#0b121f] transition-all duration-300 transform hover:scale-105"
             >
-              <Phone className="w-5 h-5" /> 
-              {/* Contact Us At<br /> */}
-              +91 94859 99199
+              Order Now
             </a>
           </div>
+
         </div>
 
         {/* --- The Animated Modal --- */}
         <AnimatePresence>
           {selectedMerch && (
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
               onClick={() => setSelectedMerch(null)}
             >
-              <motion.div 
+              <motion.div
                 initial={{ scale: 0.9, y: 50 }}
                 animate={{ scale: 1, y: 0 }}
                 exit={{ scale: 0.9, y: 50 }}
@@ -154,16 +156,20 @@ export default function EnhancedMerchandisePage() {
                 </div>
 
                 {/* Contact Button in Modal */}
-                <div className="absolute bottom-6">
+
+                {/* Contact / Order Button below image in Modal */}
+                <div className="w-full flex justify-center p-6 border-t border-white/20 bg-gray-900">
                   <a
-                    href="tel:+919485999199"
+                    href="https://forms.gle/gxFSVBp2HahdKSkb6"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 bg-[#0b121f] text-white px-8 py-3 rounded-xl font-bold text-lg border border-white hover:bg-white hover:text-[#0b121f] transition-all duration-300 transform hover:scale-105"
                   >
-                    <Phone className="w-5 h-5" /> 
-                    {/* Contact Us At<br /> */}
-                    +91 94859 99199
+                    Order Now
                   </a>
                 </div>
+
+
               </motion.div>
             </motion.div>
           )}

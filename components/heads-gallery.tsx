@@ -387,6 +387,14 @@ export function Footer() {
                   <a href="tel:+919485999199" className="hover:text-white transition-colors">+91-94859-99199</a>
                 </span>
               </div>
+
+               <div className="flex items-center justify-center md:justify-start gap-3">
+                <Phone className="h-5 w-5 text-primary" />
+                <span>
+                  <strong>Shriyaansh Gupta (Publicity Head):</strong>{" "}
+                  <a href="tel:+917982334922" className="hover:text-white transition-colors">+91-79823-34922</a>
+                </span>
+              </div>
             </div>
           </div>
 
