@@ -21,10 +21,12 @@ export function Navbar() {
   const logoText = "RANN-NEETI";
 
   return (
-    <nav
+  <nav
   className="fixed top-0 left-0 right-0 z-50
-  bg-black border-b border-white/20 shadow-lg"
+  bg-black/30 backdrop-blur-md border-b border-white/20 shadow-lg transition-colors duration-300"
 >
+
+
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
@@ -60,6 +62,9 @@ export function Navbar() {
             </Link>
             <Link href="/events" className="text-white hover:text-primary transition-colors font-medium" style={{ fontFamily: 'GreekFont' }}>
               Events
+            </Link>
+            <Link href="/merch" className="text-white hover:text-primary transition-colors font-medium" style={{ fontFamily: 'GreekFont' }}>
+              Merch
             </Link>
             <Link href="/gallery" className="text-white hover:text-primary transition-colors font-medium" style={{ fontFamily: 'GreekFont' }}>
               Gallery
@@ -108,6 +113,13 @@ export function Navbar() {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Events
+              </Link>
+              <Link
+                href="/merch"
+                className="block px-3 py-2 text-white hover:text-primary transition-colors font-medium"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Merch
               </Link>
               <Link
                 href="/gallery"

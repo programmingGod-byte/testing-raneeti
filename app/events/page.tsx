@@ -279,7 +279,7 @@ const sportsData = [
     name: 'Athletics',
     imageUrl: 'https://live.staticflickr.com/65535/52312199966_4be79e7e75_w.jpg',
     rules: ["No specific limit on participants per institute.","Please refer to the rulebook for individual event entry limits."],
-    rulebook_url: '#',
+    rulebook_url: '/rulebooks/Athletics.pdf',
   },
   {
     name: 'Badminton',

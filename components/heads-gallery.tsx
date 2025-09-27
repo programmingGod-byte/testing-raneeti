@@ -358,7 +358,7 @@ export function Footer() {
               RANN-NEETI
             </h3>
             <p className="max-w-xs">
-              The Annual Technical-Cultural Fest of IIT Mandi. Join us for an unforgettable experience.
+              The Annual Sports Fest of IIT Mandi. Join us for an unforgettable experience.
             </p>
           </div>
 
@@ -380,11 +380,12 @@ export function Footer() {
                   <a href="tel:+917666142206" className="hover:text-white transition-colors">+91-76661-42206</a>
                 </span>
               </div>
-               <div className="flex items-center justify-center md:justify-start gap-3">
+              <div className="flex items-center justify-center md:justify-start gap-3">
                 <Phone className="h-5 w-5 text-primary" />
-                <a href="tel:+919485999199" className="hover:text-white transition-colors">
-                    Contact us : 9485999199
-                </a>
+                <span>
+                  <strong>Jatin Alwariya (Convener):</strong>{" "}
+                  <a href="tel:+919485999199" className="hover:text-white transition-colors">+91-94859-99199</a>
+                </span>
               </div>
             </div>
           </div>
