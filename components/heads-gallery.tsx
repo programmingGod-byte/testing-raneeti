@@ -69,6 +69,8 @@ const initialTeamsData: TeamData = {
     { id: 24, name: "Rudraksh Rajendra Lande", imageUrl: "/images/IMG_20250728_161824 - Rudraksh Rajendra Lande.jpg", role: "", icon: "megaphone", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
     { id: 25, name: "Vivek Choudhary", imageUrl: "/images/IMG_20250731_222228_455 - Vivek Kumar Choudhary.webp", role: "", icon: "megaphone", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
     { id: 26, name: "Ramneet Kour", imageUrl: "/images/ramneet.png", role: "", icon: "megaphone", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
+     { id: 27, name: "Pranshu Gupta", imageUrl: "/images/qqq.jpg", role: "", icon: "megaphone", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
+     { id: 28, name: "AAditya", imageUrl: "/images/qq.jpg", role: "", icon: "megaphone", colors: { primary: "#1a1a1a", secondary: "#333333", text: "#ffffff", shadow: "rgba(0, 0, 0, 0.5)" } },
   ],
  
   "Planning & Management Heads": [
