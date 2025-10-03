@@ -117,14 +117,14 @@ export function HeroSection() {
               </span>
               <br />
               <span className="text-2xl sm:text-3xl md:text-4xl text-white drop-shadow-2xl">
-                Gods of Olympus
+                {/* Gods of Olympus */}
               </span>
             </h1>
           </div>
 
           <div className="mask-container">
             <p className="animate-masked-text text-base sm:text-lg md:text-xl mb-6 md:mb-8 text-gray-200 max-w-2xl mx-auto leading-relaxed">
-              Embrace the Spirit of the Gods. Join IIT Mandi's ultimate sports festival where legends are born and champions rise.
+              {/* Embrace the Spirit of the Gods. Join IIT Mandi's ultimate sports festival where legends are born and champions rise. */}
             </p>
           </div>
 
