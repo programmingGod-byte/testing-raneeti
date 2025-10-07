@@ -27,6 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${dmSans.variable} dark`}>
       <body>
+        {/* <script src="https://cdnjs.cloudflare.com/ajax/libs/jsQR/1.4.0/jsQR.min.js"></script> */}
         {/* <CustomCursor */}
         {/* <CustomCursor imageUrl="/background.png" />  */}
         <SessionProvider>{children}</SessionProvider>
