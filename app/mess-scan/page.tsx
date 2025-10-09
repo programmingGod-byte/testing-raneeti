@@ -3,8 +3,31 @@
 import { useState, useRef, useEffect } from 'react';
 import { Camera, CheckCircle, XCircle, RotateCcw, Scan } from 'lucide-react';
 import jsQR from "jsqr";
+import crypto from "crypto";
 
 // IMPORTANT: Ensure you have this script tag in your root layout file (e.g., app/layout.tsx)
+
+
+function decrypt(encryptedData) {
+    const key = Buffer.from("1234567890abcdef1234567890abcdef", "utf8"); 
+    const algorithm = "aes-256-gcm";
+
+  const [ivB64, tagB64, dataB64] = encryptedData.split(":");
+  const iv = Buffer.from(ivB64, "base64");
+  const authTag = Buffer.from(tagB64, "base64");
+  const encryptedText = Buffer.from(dataB64, "base64");
+
+  const decipher = crypto.createDecipheriv(algorithm, key, iv);
+  decipher.setAuthTag(authTag);
+
+  const decrypted = Buffer.concat([
+    decipher.update(encryptedText),
+    decipher.final(),
+  ]);
+
+  return decrypted.toString("utf8");
+}
+
 
 
 export default function QRScanner() {
@@ -118,8 +141,26 @@ export default function QRScanner() {
     if (!scannedData) return;
     setVerifying(true);
     setError('');
+    let finalData = Buffer.from(scannedData, "base64").toString("utf8");
+
+
+    // let finalData =  decrypt(scannedData); 
+    let phone = "";
+    let mess = "";
+    let uri = "";
+    console.log(finalData);
+    if(finalData.includes("mess")){
+      let parts = finalData.split("_");
+      phone = parts[2];
+      mess = parts[1];
+      uri = `/api/verify/mess?phone=${phone}&messId=${mess}`;
+    }else{
+      // pro_email
+      uri = `/api/verify/pro?email=${finalData.slice(4)}`;
+    }
+
     try {
-      const response = await fetch(`/${scannedData.includes("mess") ? 'api/verify/mess' : 'api/verify/pro'}?${scannedData.includes("mess") ? `phone=${scannedData.slice(5)}` : `email=${scannedData.slice(4)}`}`);
+      const response = await fetch(`${uri}`);
       const result = await response.json();
       if (result.success) {
         setVerificationResult({
@@ -230,8 +271,8 @@ export default function QRScanner() {
             {scannedData && !isScanning && (
               <div className="space-y-4">
                 <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-5 rounded-xl border-2 border-gray-200">
-                  <h3 className="text-xs font-bold text-gray-500 uppercase mb-2 tracking-wide">Scanned Data</h3>
-                  <p className="text-gray-900 font-mono text-sm break-all leading-relaxed">{scannedData}</p>
+                  <h3 className="text-xs font-bold text-gray-500 uppercase mb-2 tracking-wide">Scanned Succesfully</h3>
+                  <p className="text-gray-900 font-mono text-sm break-all leading-relaxed">{Buffer.from(scannedData, "base64").toString("utf8")}</p>
                 </div>
 
                 {verificationResult && (

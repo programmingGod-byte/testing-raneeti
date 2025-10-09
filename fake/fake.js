@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const { Schema } = mongoose;
+
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/testdb";
 
 // Connect to MongoDB
@@ -13,43 +15,35 @@ async function connectDB() {
 }
 
 // Define Mess Schema
-const MessSchema = new mongoose.Schema({
+const MessSchema = new Schema({
   times: { type: [Date], default: [] },
-  email: { type: String, required: true, unique: true },
+  phone: { type: String, required: true, unique: true },
+  messId: { type: String, required: true },
 });
 
-const Mess = mongoose.models.Mess || mongoose.model("pro", MessSchema);
+const Mess = mongoose.models.Mess || mongoose.model("mess", MessSchema);
 
 // Seed function
 async function seedMessData() {
   await connectDB();
 
-  // Clear existing data (optional)
+  // Clear existing data
   await Mess.deleteMany({});
   console.log("🧹 Cleared existing Mess data");
 
   // Create fake Mess data
   const fakeData = [
     {
-      email: "1",
-      times: [
-        new Date(Date.now() - 1000 * 60 * 60 * 10),
-        
-      ],
+      phone: "9942534071",
+      messId: "oak",
+      times: [], // 10 hours ago
     },
     {
-      email: "2",
-      times: [
-      
-      ],
+      phone: "9311039309",
+      messId: "oak",
+      times: [], // empty times array
     },
-    {
-      email: "3",
-      times: [
-        new Date(Date.now() - 1000 * 60 * 60 * 6),
-        new Date(Date.now() - 1000 * 60 * 60 * 1),
-      ],
-    },
+    
   ];
 
   await Mess.insertMany(fakeData);
