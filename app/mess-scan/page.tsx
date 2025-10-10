@@ -73,10 +73,10 @@ export default function QRScanner() {
       canvas.width = video.videoWidth;
       canvas.height = video.videoHeight;
 
-      ctx.translate(canvas.width, 0);
-      ctx.scale(-1, 1);
+      // ctx.translate(canvas.width, 0);
+      // ctx.scale(-1, 1);
       ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      // ctx.setTransform(1, 0, 0, 1, 0, 0);
 
       const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
 
@@ -223,7 +223,7 @@ export default function QRScanner() {
                   muted
                   onCanPlay={() => scanQRCode()}
                   className="w-full"
-                  style={{ minHeight: '300px', maxHeight: '500px', objectFit: 'cover', display: 'block', transform: 'scaleX(-1)' }}
+                  style={{ minHeight: '300px', maxHeight: '500px', objectFit: 'cover', display: 'block'/*, transform: 'scaleX(-1)' */}}
                 />
                 <canvas ref={canvasRef} className="hidden" />
 
