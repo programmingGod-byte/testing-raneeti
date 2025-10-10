@@ -324,7 +324,7 @@ export default function QRScanner() {
 
           <div className="bg-gray-50 px-6 py-4 border-t border-gray-200">
             <p className="text-xs text-gray-500 text-center">
-              Remember to replace the API endpoint in the code.
+              {/* Remember to replace the API endpoint in the code. */}
             </p>
           </div>
         </div>
